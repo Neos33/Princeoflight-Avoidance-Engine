@@ -146,6 +146,7 @@ if(!init){
         //bullets[i].sprite_index = sprite_index
         bullets[i].depth = -5
         bullets[i].image_alpha=0;
+        bullets[i].image_speed=0;
     }
 }
 

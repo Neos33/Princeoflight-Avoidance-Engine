@@ -279,6 +279,10 @@
       <script>scripts\scrEaseValue.gml</script>
       <script>scripts\scrFormat.gml</script>
     </scripts>
+    <scripts name="Avoidance Core">
+      <script>scripts\avoidance_add_debug_key.gml</script>
+      <script>scripts\avoidance_add_attack.gml</script>
+    </scripts>
     <scripts name="Avoidance Utility">
       <script>scripts\rlerp.gml</script>
       <script>scripts\esign.gml</script>
@@ -334,9 +338,7 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shAurora.shader</shader>
     <shader type="GLSLES">shaders\shPlasma.shader</shader>
-    <shader type="GLSLES">shaders\shStatic.shader</shader>
     <shader type="GLSLES">shaders\shEasyShaderExample.shader</shader>
-    <shader type="GLSLES">shaders\shWave.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -405,16 +407,6 @@
       <object>objects\objCherryBounceLat</object>
       <object>objects\objCherryBounceVert</object>
       <object>objects\objKillerBlock</object>
-      <objects name="Bosses">
-        <object>objects\objCherryEnemyTest</object>
-        <object>objects\objCherryBossTest</object>
-        <objects name="Miku">
-          <object>objects\objMiku</object>
-          <object>objects\objCherryRandomCol</object>
-          <object>objects\objCherryRandomColExplode</object>
-          <object>objects\objCherryRandomColBounce</object>
-        </objects>
-      </objects>
     </objects>
     <objects name="Triggers">
       <object>objects\objTriggerManager</object>
@@ -486,6 +478,7 @@
     <objects name="Avoidance Core">
       <object>objects\objSampleAvoidance</object>
       <object>objects\objAvoidanceDrawController</object>
+      <object>objects\objAvoidanceMarker</object>
       <object>objects\objAvoidanceEntity</object>
     </objects>
     <objects name="Avoidance Bullets">
@@ -511,6 +504,7 @@
       <room>rooms\rTest</room>
     </rooms>
     <room>rooms\rTemplate</room>
+    <room>rooms\rPreAvoidance</room>
     <room>rooms\rAvoidanceTemplate</room>
   </rooms>
   <help>

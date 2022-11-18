@@ -27,6 +27,7 @@ switch (room)                       //Determines which song to play
         break;
 }
 
+if(instance_exists(objAvoidanceMarker)) roomSong=-2;
 if (roomSong != -2)
 {
     scrPlayMusic(roomSong, true);

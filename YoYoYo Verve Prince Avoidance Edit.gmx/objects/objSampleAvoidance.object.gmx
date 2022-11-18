@@ -71,20 +71,17 @@ musicID=musOnDeath //Music used
 
 BEAT_TIME=0.381*50; //BEAT_TIME = time between beats. Use Audacity or a BPM detection tool to set it
 
-enum sampleAvoidanceAttacks { //An enum determining the attack sequence. NUM_ATTACKS should be always left last, determining the total amount of attacks.
-    ATTACK1,
-    ATTACK2,
-    END,
-    NUM_ATTACKS
-}
+//Add attacks using avoidance_add_attack. "END" should always be last
+numTimings=0;
 
-numTimings=sampleAvoidanceAttacks.NUM_ATTACKS;
+attackNames=ds_list_create();
+attackTimings=ds_list_create();
 
-timings[sampleAvoidanceAttacks.ATTACK1]=0;
-timings[sampleAvoidanceAttacks.ATTACK2]=100;
-timings[sampleAvoidanceAttacks.END]=300;
+avoidance_add_attack("ATTACK1",0);
+avoidance_add_attack("ATTACK2",100);
+avoidance_add_attack("END",300);
 
-timings[sampleAvoidanceAttacks.NUM_ATTACKS]=10000000;
+
 
 </string>
           </argument>
@@ -168,6 +165,30 @@ secretItem=-1; //set the secret item to award the player. Default is -1 =&gt; do
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Call the cleanup event
+event_user(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
@@ -212,16 +233,7 @@ RealStep += room_speed * delta_time / 1000000;
           <argument>
             <kind>1</kind>
             <string>///Increment timer, sync to music
-view_yview[0]+=cameraSpeed;
-if(!instance_exists(objPlayer)||finish) {
-    if(attack==marenolAvoidanceAttacks.FINAL_FALL){
-        with(objPBullet) gravity=0;
-    }else if(attack==marenolAvoidanceAttacks.DECAY){
-        with(oRdrChangeVariableCommand) instance_destroy();
-    }
-    exit;
-}
-if(!instance_exists(objPBossMarker)){
+if(!instance_exists(objAvoidanceMarker)){
      instance_destroy();
      exit;
 }
@@ -235,15 +247,11 @@ if(t &gt; 0){
         audio_sound_set_track_position(global.currentMusic,t_music / 50);
     }
 }
-
-if(t&gt;timings[attack+1]){
-    if(t&gt;7800||t==numTimings-1){
-        instance_destroy();
-    }else{
+if(attack&lt;numTimings-1){
+    if(t&gt;attackTimings[| attack+1]){
         attack++;
     }
 }
-
 </string>
           </argument>
         </arguments>
@@ -276,61 +284,17 @@ if(global.debugMode){
         var trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
         audio_sound_set_track_position(global.currentMusic,trackPos/50);
         t=floor(trackPos);
-        for(var i=0;i&lt;array_length_1d(timings);i++){
-            if(trackPos*50&gt;timings[i]){
+        for(var i=0;i&lt;ds_list_size(attackTimings)-1;i++){
+            if(trackPos*50&gt;attackTimings[|i]){
                 attack=i;
                 break;       
             }
         }
-        with(objPEntity) {
+        with(objAvoidanceEntity) {
             if(!child)
             instance_destroy();
         }
         
-    }
-    if(keyboard_check_pressed(ord("1"))){
-        with(objPlayer) instance_destroy();
-        room_goto(rPAvoidance3);
-        t=timings[marenolAvoidanceAttacks.MOOD_BREAKER]-1;
-        attack=marenolAvoidanceAttacks.MOOD_BREAKER-1;
-        audio_sound_set_track_position(global.currentMusic,t/50);
-    }
-    if(keyboard_check_pressed(ord("2"))){
-        with(objPlayer) instance_destroy();
-        room_goto(rPAvoidance4);
-        t=timings[marenolAvoidanceAttacks.SAW_BOX]-1;
-        attack=marenolAvoidanceAttacks.SAW_BOX-1;
-        audio_sound_set_track_position(global.currentMusic,t/50);
-    }
-    if(keyboard_check_pressed(ord("3"))){
-        with(objPlayer) instance_destroy();
-        room_goto(rPAvoidance5);
-        t=timings[marenolAvoidanceAttacks.WATER]-1;
-        attack=marenolAvoidanceAttacks.WATER-1;
-        audio_sound_set_track_position(global.currentMusic,t/50);
-    }
-    if(keyboard_check_pressed(ord("4"))){
-        with(objPlayer) instance_destroy();
-        room_goto(rPAvoidance6);
-        t=timings[marenolAvoidanceAttacks.EYES]-1;
-        attack=marenolAvoidanceAttacks.EYES-1;
-        audio_sound_set_track_position(global.currentMusic,t/50);
-    }
-    if(keyboard_check_pressed(ord("5"))){
-        with(objPlayer) instance_destroy();
-        room_goto(rPAvoidance7);
-        t=timings[marenolAvoidanceAttacks.DECAY]-1;
-        attack=marenolAvoidanceAttacks.DECAY-1;
-        audio_sound_set_track_position(global.currentMusic,t/50);
-    }
-    if(keyboard_check_pressed(ord("6"))){
-        with(objPlayer) instance_destroy();
-        room_goto(rPAvoidance7);
-        t=timings[marenolAvoidanceAttacks.THREADS]-1;
-        attack=marenolAvoidanceAttacks.THREADS-1;
-        global.infJump=true;
-        with(objPlayerStart) x-=300;
-        audio_sound_set_track_position(global.currentMusic,t/50);
     }
 }
 </string>
@@ -354,24 +318,24 @@ if(global.debugMode){
           <argument>
             <kind>1</kind>
             <string>///Attacks
-var ct=t-timings[attack];
+var ct=t-attackTimings[|attack];
 var BT=BEAT_TIME;
 
 if(!instance_exists(objPlayer)) exit;
 
-switch(attack){ //Main attack loop
-    case sampleAvoidanceAttacks.ATTACK1:
+switch(attackNames[|attack]){ //Main attack loop
+    case "ATTACK1":
+    {
+        
+        break;
+    }
+    
+    case "ATTACK2":
     {
         break;
     }
     
-    
-    case sampleAvoidanceAttacks.ATTACK2:
-    {
-        break;
-    }
-    
-    case sampleAvoidanceAttacks.END:
+    case "END":
     {
         if(ct==1){
         
@@ -388,6 +352,81 @@ switch(attack){ //Main attack loop
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Clean up
+
+
+ds_list_destroy(attackNames);
+ds_list_destroy(attackTimings);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Call the cleanup event
+event_user(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Call the cleanup event
+event_user(0);
 </string>
           </argument>
         </arguments>
@@ -418,7 +457,7 @@ if(global.debugMode){
     var barPosition=lerp(32,room_width-32,(t-startTiming)/(endTiming-startTiming));
     draw_rectangle_colour(barPosition-4,32+8-16,barPosition+4,32+8+16,c_white,c_white,c_white,c_white,0);
     for(var i=0;i&lt;numTimings;++i){
-        var markPosition=lerp(32,room_width-32,(timings[i]-startTiming)/(endTiming-startTiming));
+        var markPosition=lerp(32,room_width-32,(attackTimings[|i]-startTiming)/(endTiming-startTiming));
         draw_rectangle_colour(markPosition-2,32+8-16,markPosition+2,32+8+16,c_white,c_white,c_white,c_white,0);
     }
     draw_set_font(fDefault12);

@@ -1,18 +1,20 @@
-///scrMake3DCircleExt(x,y,radius,angle,dAngle,numBullets,tag);
+///scrMake3DCircleExt(x,y,sprite,index,radius,angle,dAngle,theta,dTheta,phi,dPhi,numBullets,tag);
 //TODO: add a demonstration of how the Euler angles (angle, theta, phi) work, 
 //either through a room or through an external image
 
 var spawnX = argument[0];
 var spawnY = argument[1];
-var spawnRadius = argument[2];
-var spawnAngle = argument[3];
-var spawnDAngle = argument[4];
-var spawnTheta = argument[5];
-var spawnDTheta = argument[6];
-var spawnPhi = argument[7];
-var spawnDPhi = argument[8];
-var spawnNum = argument[9];
-var spawnTag = argument[10];
+var spawnSprite = argument[2];
+var spawnIndex = argument[3];
+var spawnRadius = argument[4];
+var spawnAngle = argument[5];
+var spawnDAngle = argument[6];
+var spawnTheta = argument[7];
+var spawnDTheta = argument[8];
+var spawnPhi = argument[9];
+var spawnDPhi = argument[10];
+var spawnNum = argument[11];
+var spawnTag = argument[12];
 
 
 
@@ -28,4 +30,13 @@ obj.dTheta=spawnDTheta;
 obj.phi=spawnPhi;
 obj.dPhi=spawnDPhi;
 
+
+with(obj){
+    event_perform(ev_step,ev_step_normal);
+    for(var i=0;i<numBullets;i++){
+        bullets[i].sprite_index = spawnSprite;
+        bullets[i].image_index = spawnIndex;
+    }
+}
+return obj;
 
