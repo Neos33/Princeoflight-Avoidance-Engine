@@ -28,7 +28,7 @@
             <string>event_inherited();
 surf=surface_create(800,608);
 
-shader=shSepia;
+shader=shAurora;
 
 t=0;
 intensity=1;

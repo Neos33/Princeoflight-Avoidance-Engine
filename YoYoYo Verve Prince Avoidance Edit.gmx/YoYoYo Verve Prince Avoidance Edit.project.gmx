@@ -182,6 +182,7 @@
       <sprite>sprites\sprBulletLeehe</sprite>
       <sprite>sprites\sprBulletRazzor</sprite>
     </sprites>
+    <sprite>sprites\sprSquareSolid</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -339,6 +340,7 @@
     <shader type="GLSLES">shaders\shAurora.shader</shader>
     <shader type="GLSLES">shaders\shPlasma.shader</shader>
     <shader type="GLSLES">shaders\shEasyShaderExample.shader</shader>
+    <shader type="GLSLES">shaders\shGodRays.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>

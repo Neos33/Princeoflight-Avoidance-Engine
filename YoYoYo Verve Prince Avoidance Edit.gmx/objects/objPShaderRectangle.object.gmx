@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 
-shader=shSepia;
+shader=shAurora;
 
 t=0;
 intensity=0;
