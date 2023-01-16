@@ -343,6 +343,10 @@
       <script>scripts\scrShaperHeart.gml</script>
       <script>scripts\scrShaperStar.gml</script>
     </scripts>
+    <scripts name="RNG Control">
+      <script>scripts\rng_controller_create.gml</script>
+      <script>scripts\random_range_controlled.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shAurora.shader</shader>
@@ -478,6 +482,7 @@
         <object>objects\oViewScaleCommand</object>
         <object>objects\oViewScreenShakeCommand</object>
       </objects>
+      <object>objects\objRNGController</object>
       <object>objects\objBrokenTile</object>
     </objects>
     <objects name="Shader Manipulation">

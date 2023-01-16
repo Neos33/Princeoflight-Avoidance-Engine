@@ -61,5 +61,6 @@ with (player)
 {
     xScale = global.saveMap[? "playerXScale"];
 }
-
+//Delete persistent RNG controllers
+with(objRNGController) instance_destroy();
 room_goto(asset_get_index(global.saveMap[? "room"]));
