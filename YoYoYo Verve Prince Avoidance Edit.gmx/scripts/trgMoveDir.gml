@@ -1,9 +1,11 @@
-///trgMoveDir(type/dir, speed)
-//Sets an object's movement defined by direction and speed.
-//Arguments:
-//1. direction - degrees
-//2. speed
-
+/// trgMoveDir(dir, speed);
+/**
+    * Sets an object's movement defined by direction and speed.
+    * 
+    * @param {float} dir - Direction to set
+    * @param {float} speed - Speed to set
+    * 
+*/
 if (!global.makingTrigger)
 {
     switch(argument[0])

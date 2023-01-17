@@ -1,6 +1,12 @@
-/// instance_shrink_out( targetId, fadeDuration )
-// Gradually lower the scale value of all instances with the given targetId.
-// When the scale reaches zero, destroy them.
+/// instance_shrink_out( targetId, shrinkDuration )
+/**
+    * Gradually lower the scale value of all instances with the given targetId.
+    * When the scale reaches zero, destroy them.
+    * Fade duration represents the maximum possible duration for fully opaque instances.
+    * If an instance is already partially transparent, it will disappear quicker.
+    * @param {instanceID} targetId - the index of the object to shrink out.
+    * @param {int} shrinkDuration - The duration of the shrinkout for an object with full scale, in frames.
+*/
 var targetId = argument0;
 var fadeDuration = max( argument1, 1 );
 

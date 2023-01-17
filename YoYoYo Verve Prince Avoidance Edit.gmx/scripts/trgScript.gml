@@ -1,12 +1,14 @@
-///trgScript(type/script, [with], [arg0], [arg1], [arg2])
-//Calls a script when triggered.
-//Arguments:
-//1. script
-//2. [with] - which object calls the script. (id by default, meaning the objTriggerManager)
-//3. [arg0] - first argument to be passed to the script. (not passed by default)
-//4. [arg1]
-//5. [arg2]
-
+/// trgScript(script, [with], [arg0], [arg1], [arg2]);
+/**
+    * Calls a script when triggered.
+    * 
+    * @param {scriptID} script - The script to be called.
+    * @param {instanceID} with - which object calls the script. (id by default, meaning the objTriggerManager)
+    * @param [arg0] - first argument to be passed to the script. (not passed by default)
+    * @param [arg1] - the second argument to be passed.
+    * @param [arg2] - the third argument to be passed.
+    * 
+*/
 if (!global.makingTrigger)
 {
     switch(argument[0])

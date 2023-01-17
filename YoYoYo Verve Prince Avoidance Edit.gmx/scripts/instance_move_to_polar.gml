@@ -1,6 +1,17 @@
-///instance_move_to_polar( targetId, targetX, targetY, targetRadius, targetAngle, duration, easingFunc = tween_sine_inout )
-// Rotate an instance around a point by targetAngle degrees.
-// New instance commands override existing ones.
+///instance_move_to_polar( targetId, pivotX, pivotY, targetRadius, targetAngle, duration, easingFunc = tween_sine_inout )
+/**
+    * Move an instance or all instances of an object to a given position, in polar coordinates around a specified point.
+    * 
+    * New instance commands override existing ones.
+    * @param {instanceID} targetId - The instance to move.
+    * @param {float} pivotX - The X coordinate of the point to move the instance around.
+    * @param {float} pivotY - The Y coordinate of the point to move the instance around.
+    * @param {float} targetRadius - The distance from the pivot point to move the instance to.
+    * @param {float} targetAngle - The angle to move the instance to, with 0 being the positive horizontal axis (the 3 o'clock position)
+    * @param {integer} duration - The duration of the change, in frames.
+    * @param {easingFuncID} [easingFunc] - The easing function to use. The default is tween_linear.
+    * 
+*/
 var targetId = argument[0];
 var targetX = argument[1];
 var targetY = argument[2];

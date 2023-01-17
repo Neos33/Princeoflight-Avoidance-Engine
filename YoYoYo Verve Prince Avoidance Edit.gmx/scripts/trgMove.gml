@@ -1,9 +1,11 @@
-///trgMove(type/hspeed, vspeed)
-//Sets an object's h/vspeeds when triggered.
-//Arguments:
-//1. hspeed
-//2. vspeed
-
+/// trgMove(hspeed, vspeed);
+/**
+    * Sets an object's h/vspeeds when triggered.
+    * 
+    * @param {float} hspeed - The hspeed of the object to be set.
+    * @param {float} vspeed - The vspeed of the object to be set.
+    * 
+*/
 if (!global.makingTrigger)
 {
     switch(argument[0])

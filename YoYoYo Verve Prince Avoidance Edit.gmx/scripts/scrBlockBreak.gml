@@ -1,5 +1,18 @@
-///scrBlockBreak(x,y, layer);
-///Break a tile in the layer and a block at that space
+/// scrBlockBreak(x,y, layer);
+/**
+    * Removes a tile in the layer and breaks a block at that space.
+    *
+    * @param {float} x - The X position to remove a block at.
+    * @param {float} y - The Y position to remove a block at.
+    * @param {integer} layer - The layer to remove the tile from.
+    *
+    * @example
+    * //The following code breaks a block at position (0,0) (top left corner of the room)
+    * //and removes a tile at layer 10000000 at that position.
+    * scrBlockBreak(0,0,10000000);
+    * 
+    
+*/
 var X = argument[0];
 var Y = argument[1];
 var Layer = argument[2];

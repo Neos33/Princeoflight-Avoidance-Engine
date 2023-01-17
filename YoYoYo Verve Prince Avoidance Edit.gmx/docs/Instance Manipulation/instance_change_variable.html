@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>
+        
+            
+                instance_change_variable • Princeoflight Avoidance Engine Documentation
+            
+        
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
+    </head>
+    <body class="d-flex flex-column">
+        <div class="page-content">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="../index.html">Princeoflight Avoidance Engine</a>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <span class="navbar-text ml-auto">Generated with <a href="https://jhm-ciberman.github.io/docs_gm/" target="_blank">docs_gm</a></span>
+                </div>
+                <button class="navbar-toggler d-block d-lg-none collapsed" data-toggle="collapse" data-target="#navigation-column" aria-expanded="false" aria-controls="navigation-column" aria-label="Toggle index">
+                    <i class="material-icons">menu</i>
+                </button>
+            </nav>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-3  border-right p-0 bg-white collapse dont-collapse-sm" id="navigation-column">
+
+                        
+
+
+
+<ul class="list-group list-group-flush" id="navigation">
+	
+	
+		
+			<li class="list-group-item d-flex justify-content-between ">
+				
+
+				
+					<a class="btn btn-link" href="../Trigger.html" >
+						<i class="material-icons float-left mr-3">folder</i><span>Trigger</span>
+					</a>
+				
+
+				<button class="btn btn-link text-dark collapsed" data-toggle="collapse" data-target="#tree-Trigger" aria-expanded="false" aria-controls="tree-Trigger">
+					<i class="material-icons" >expand_more</i>
+					<span class="sr-only">Expand folder Trigger</span>
+				</button>
+			</li>
+			<div class="collapse " id="tree-Trigger">
+				<ul class="list-group list-group" >
+					
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Trigger/scrMakeTrigger.html" >scrMakeTrigger</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Trigger/trgMove.html" >trgMove</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Trigger/trgMoveDir.html" >trgMoveDir</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Trigger/trgScript.html" >trgScript</a>
+				
+			</li>
+		
+	
+
+
+				</ul>
+			</div>
+		
+	
+		
+			<li class="list-group-item d-flex justify-content-between ">
+				
+
+				
+					<a class="btn btn-link" href="../Avoidance Core.html" >
+						<i class="material-icons float-left mr-3">folder</i><span>Avoidance Core</span>
+					</a>
+				
+
+				<button class="btn btn-link text-dark collapsed" data-toggle="collapse" data-target="#tree-Avoidance Core" aria-expanded="false" aria-controls="tree-Avoidance Core">
+					<i class="material-icons" >expand_more</i>
+					<span class="sr-only">Expand folder Avoidance Core</span>
+				</button>
+			</li>
+			<div class="collapse " id="tree-Avoidance Core">
+				<ul class="list-group list-group" >
+					
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Core/avoidance_add_attack.html" >avoidance_add_attack</a>
+				
+			</li>
+		
+	
+
+
+				</ul>
+			</div>
+		
+	
+		
+			<li class="list-group-item d-flex justify-content-between ">
+				
+
+				
+					<a class="btn btn-link" href="../Avoidance Utility.html" >
+						<i class="material-icons float-left mr-3">folder</i><span>Avoidance Utility</span>
+					</a>
+				
+
+				<button class="btn btn-link text-dark collapsed" data-toggle="collapse" data-target="#tree-Avoidance Utility" aria-expanded="false" aria-controls="tree-Avoidance Utility">
+					<i class="material-icons" >expand_more</i>
+					<span class="sr-only">Expand folder Avoidance Utility</span>
+				</button>
+			</li>
+			<div class="collapse " id="tree-Avoidance Utility">
+				<ul class="list-group list-group" >
+					
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrBlockBreak.html" >scrBlockBreak</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrBlockCreate.html" >scrBlockCreate</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/instance_create_ext.html" >instance_create_ext</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrTraceTrajectory.html" >scrTraceTrajectory</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrTracerAttach.html" >scrTracerAttach</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrMake3DShape.html" >scrMake3DShape</a>
+				
+			</li>
+		
+	
+
+
+				</ul>
+			</div>
+		
+	
+		
+			<li class="list-group-item d-flex justify-content-between ">
+				
+
+				
+					<a class="btn btn-link" href="../Instance Manipulation.html" >
+						<i class="material-icons float-left mr-3">folder</i><span>Instance Manipulation</span>
+					</a>
+				
+
+				<button class="btn btn-link text-dark " data-toggle="collapse" data-target="#tree-Instance Manipulation" aria-expanded="true" aria-controls="tree-Instance Manipulation">
+					<i class="material-icons" >expand_more</i>
+					<span class="sr-only">Expand folder Instance Manipulation</span>
+				</button>
+			</li>
+			<div class="collapse show" id="tree-Instance Manipulation">
+				<ul class="list-group list-group" >
+					
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_change_alpha.html" >instance_change_alpha</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_morph.html" >instance_morph</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_change_colour.html" >instance_change_colour</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_change_colour_variable.html" >instance_change_colour_variable</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item active">
+				
+					<div class="btn ml-4">instance_change_variable<span class="sr-only">(current)</span></div>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_change_variable_array.html" >instance_change_variable_array</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_change_variable_array_full.html" >instance_change_variable_array_full</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_fade_out.html" >instance_fade_out</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_move_to.html" >instance_move_to</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_move_to_polar.html" >instance_move_to_polar</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_scale.html" >instance_scale</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="instance_shrink_out.html" >instance_shrink_out</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="script_execute_delayed.html" >script_execute_delayed</a>
+				
+			</li>
+		
+	
+
+
+				</ul>
+			</div>
+		
+	
+		
+			<li class="list-group-item d-flex justify-content-between ">
+				
+
+				
+					<a class="btn btn-link" href="../RNG Control.html" >
+						<i class="material-icons float-left mr-3">folder</i><span>RNG Control</span>
+					</a>
+				
+
+				<button class="btn btn-link text-dark collapsed" data-toggle="collapse" data-target="#tree-RNG Control" aria-expanded="false" aria-controls="tree-RNG Control">
+					<i class="material-icons" >expand_more</i>
+					<span class="sr-only">Expand folder RNG Control</span>
+				</button>
+			</li>
+			<div class="collapse " id="tree-RNG Control">
+				<ul class="list-group list-group" >
+					
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../RNG Control/rng_controller_create.html" >rng_controller_create</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../RNG Control/random_range_controlled.html" >random_range_controlled</a>
+				
+			</li>
+		
+	
+
+
+				</ul>
+			</div>
+		
+	
+		
+			<li class="list-group-item d-flex justify-content-between ">
+				
+
+				
+					<a class="btn btn-link" href="../Shader Manipulation.html" >
+						<i class="material-icons float-left mr-3">folder</i><span>Shader Manipulation</span>
+					</a>
+				
+
+				<button class="btn btn-link text-dark collapsed" data-toggle="collapse" data-target="#tree-Shader Manipulation" aria-expanded="false" aria-controls="tree-Shader Manipulation">
+					<i class="material-icons" >expand_more</i>
+					<span class="sr-only">Expand folder Shader Manipulation</span>
+				</button>
+			</li>
+			<div class="collapse " id="tree-Shader Manipulation">
+				<ul class="list-group list-group" >
+					
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Shader Manipulation/scrClearShaders.html" >scrClearShaders</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Shader Manipulation/scrApplyShaderEffect.html" >scrApplyShaderEffect</a>
+				
+			</li>
+		
+	
+
+
+				</ul>
+			</div>
+		
+	
+
+
+</ul>
+                    </div>
+                    <div class="col-12 col-lg-9">
+                        <main class="container my-4">
+                            
+                            
+
+    
+
+
+
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			
+
+	
+	
+		
+
+	
+	
+		
+
+	
+	
+
+	
+		<li class="breadcrumb-item"><a href="../index.html">Main</a></li>
+	
+
+
+	
+
+	
+		<li class="breadcrumb-item"><a href="../Instance Manipulation.html">Instance Manipulation</a></li>
+	
+
+
+	
+
+	
+		<li class="breadcrumb-item active" aria-current="page">instance_change_variable</li>
+	
+
+
+		</ol>
+	</nav>
+
+
+    
+
+
+
+<h3 id="instance_change_variable">instance_change_variable</h3>
+
+<p><b>Syntax: </b></p>
+<pre class="lang-js"><code>instance_change_variable(targetId, varName, targetX, duration, [easingFunc]);</code></pre>
+
+
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped js-options-table js-options-table">
+            <thead>
+                <tr>
+                    <th>Argument name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                
+                    <tr>
+                        <td><code>targetId</code></td>
+                        <td><code>instanceID</code></td>
+                        <td>The instance to change a variable of.</td>
+                    </tr>
+                
+                    <tr>
+                        <td><code>varName</code></td>
+                        <td><code>string</code></td>
+                        <td>A string containing the name of the variable to change.</td>
+                    </tr>
+                
+                    <tr>
+                        <td><code>targetX</code></td>
+                        <td><code>float</code></td>
+                        <td>The final value of the manipulated variable.</td>
+                    </tr>
+                
+                    <tr>
+                        <td><code>duration</code></td>
+                        <td><code>integer</code></td>
+                        <td>The duration of the change, in frames.</td>
+                    </tr>
+                
+                    <tr>
+                        <td><code>easingFunc</code></td>
+                        <td><code>easingFuncID</code></td>
+                        <td>The easing function to use. The default is tween_sine_inout.</td>
+                    </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+    <div class ="description">
+        <p><b>Description: </b></p>
+        Change the variable given by the string varName to targetX over time.
+New instance commands override existing ones.
+    </div>
+
+
+
+
+
+    
+	<div class="breadcrumb mt-5 row">
+		
+			<div class="col">
+				<a href="../Instance Manipulation.html" class="float-left">Back: Instance Manipulation</a>
+			</div>
+		
+
+		
+			<div class="col">
+				<a href="instance_change_variable_array.html"  class="float-right">Next: instance_change_variable_array</a>
+			</div>
+		
+	</div>
+
+
+
+
+
+
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer bg-light text-center text-muted py-4">
+            <div>Documentation generated with <a href="https://jhm-ciberman.github.io/docs_gm/" target="_blank" class="text-primary">docs_gm</a></div>
+            <div>Last updated at Wed Jan 18 2023</div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

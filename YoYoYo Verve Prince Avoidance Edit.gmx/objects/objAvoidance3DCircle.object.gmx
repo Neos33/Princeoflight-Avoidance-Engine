@@ -176,7 +176,7 @@ if(!init){
 radius=image_xscale;
 for (var i=0; i&lt;numBullets; i++) {
     if(instance_exists(bullets[i])){
-        var ct = angle+i/numBullets; // individual cherry's time
+        var ct = angle+360*i/numBullets; // individual cherry's time
         var r = radius;
         var a = ct;
         var r2=r/5;
@@ -190,6 +190,8 @@ for (var i=0; i&lt;numBullets; i++) {
         
         bullets[i].x = x+baseX*dcos(phi)+baseY*dsin(phi); // apply rotation
         bullets[i].y = y+baseX*dsin(phi)-baseY*dcos(phi);
+        
+        
         bullets[i].z = z+r*dcos(a-90)*dsin(theta)
         bullets[i].baseAlpha=image_alpha;
         bullets[i].killer=killer;
