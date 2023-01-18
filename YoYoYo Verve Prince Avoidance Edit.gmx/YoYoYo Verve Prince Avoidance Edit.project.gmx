@@ -175,14 +175,21 @@
       <sprite>sprites\sprPBigArrowhead</sprite>
       <sprite>sprites\sprPBigArrowheadInverted</sprite>
       <sprite>sprites\sprBulletPlasma</sprite>
+      <sprite>sprites\sprBulletArrowhead</sprite>
       <sprite>sprites\sprBulletKunai</sprite>
       <sprite>sprites\sprPCircle</sprite>
       <sprite>sprites\sprPCircleInverted</sprite>
       <sprite>sprites\sprPCircleSmall</sprite>
       <sprite>sprites\sprBulletLeehe</sprite>
       <sprite>sprites\sprBulletCherry</sprite>
+      <sprite>sprites\sprBulletCherryWhite</sprite>
+      <sprite>sprites\sprBulletCherryBlack</sprite>
       <sprite>sprites\sprBulletRazzor</sprite>
+      <sprite>sprites\sprBulletLeek</sprite>
+      <sprite>sprites\sprBulletDot</sprite>
     </sprites>
+    <sprite>sprites\sprAvoidanceController</sprite>
+    <sprite>sprites\sprDrawController</sprite>
     <sprite>sprites\sprSquareSolid</sprite>
   </sprites>
   <backgrounds name="background">
@@ -357,6 +364,9 @@
     <scripts name="Shader Manipulation">
       <script>scripts\scrClearShaders.gml</script>
       <script>scripts\scrApplyShaderEffect.gml</script>
+    </scripts>
+    <scripts name="Tutorials">
+      <script>scripts\TUTORIAL_YourFirstAvoidance.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

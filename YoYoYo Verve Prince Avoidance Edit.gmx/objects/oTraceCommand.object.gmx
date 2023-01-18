@@ -42,6 +42,7 @@ while(cr&gt;dist){
     obj1.tag=tag;
     obj1.sprite_index=obj.sprite_index;
     obj1.image_index=obj.image_index;
+    obj1.image_angle=obj.image_angle;
     obj1.image_xscale=obj.image_xscale;
     obj1.image_yscale=obj.image_yscale;
     obj1.image_alpha=obj.image_alpha;

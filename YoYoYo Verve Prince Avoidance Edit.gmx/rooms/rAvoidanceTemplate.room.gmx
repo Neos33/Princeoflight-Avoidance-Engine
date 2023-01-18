@@ -137,7 +137,7 @@
     <instance objName="objBlock" x="64" y="0" name="inst_E3C6A283" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="32" y="0" name="inst_FDF78D4D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSampleAvoidance" x="64" y="32" name="inst_A2A53ECC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAvoidanceDrawController" x="32" y="32" name="inst_C6821452" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAvoidanceDrawController" x="32" y="32" name="inst_C6821452" locked="0" code="additive=true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAvoidanceMarker" x="96" y="32" name="inst_CBDD4107" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
