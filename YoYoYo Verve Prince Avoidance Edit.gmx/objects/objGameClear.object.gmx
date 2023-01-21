@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>///set game to clear and autosave when touched
 
-if (!global.gameClear)
+if (!savedata_get("gameClear"))
 {
-    global.gameClear = true;
-    scrSaveGame(true);
+    savedata_set("gameClear", true);
+    savedata_save(true);
 }
 </string>
           </argument>

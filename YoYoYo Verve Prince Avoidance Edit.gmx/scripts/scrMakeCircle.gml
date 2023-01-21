@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:YoYoYo Verve Prince Avoidance Edit.gmx/scripts/scrMakeCircle.gml
 ///scrMakeCircle(x,y,angle,numprojectiles,speed,obj,opt_tag)
+========
+///spawn_circle(x,y,angle,numprojectiles,speed,obj)
+>>>>>>>> upstream/main:YoYoYo Verve Prince Avoidance Edit.gmx/scripts/spawn_circle.gml
 //Spawns a ring of projectiles
 
 var spawnX = argument0;
