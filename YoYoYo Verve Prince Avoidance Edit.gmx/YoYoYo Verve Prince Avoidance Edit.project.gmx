@@ -350,10 +350,13 @@
     </scripts>
     <scripts name="Shape Curves">
       <script>scripts\scrShaperCircle.gml</script>
+      <script>scripts\scrShaperTeardrop.gml</script>
+      <script>scripts\scrShaperGear.gml</script>
       <script>scripts\scrShaperIdentity.gml</script>
       <script>scripts\scrShaperSpiral.gml</script>
       <script>scripts\scrShaperFlower.gml</script>
       <script>scripts\scrShaperShape.gml</script>
+      <script>scripts\scrShaperSawblade.gml</script>
       <script>scripts\scrShaperHeart.gml</script>
       <script>scripts\scrShaperStar.gml</script>
     </scripts>

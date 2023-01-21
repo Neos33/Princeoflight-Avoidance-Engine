@@ -125,7 +125,7 @@ RealStep=0;
 
 
 startTiming=0;
-endTiming=floor(audio_sound_length(musicID)*50);
+endTiming=attackTimings[|numTimings-1];//floor(audio_sound_length(musicID)*50);
 
 if(instance_number(object_index)&gt;1) {
     
@@ -382,7 +382,7 @@ switch(attackNames[|attack]){ //Main attack loop
             heart.killer=true;
             heart.dTheta=0.25;
             instance_scale(heart,200,400,tween_linear);
-            instance_morph(heart,scrShaperHeart,10,400,tween_sine_out);
+            instance_morph(heart,scrShaperHeart,5,400,tween_sine_out);
             
         }
         break;
