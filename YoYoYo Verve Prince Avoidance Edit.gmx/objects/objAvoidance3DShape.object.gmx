@@ -76,7 +76,7 @@ z=0;
             <kind>1</kind>
             <string>///Shape descriptor
 
-shaper = scrShaperCircle;
+shaper = shaper_circle;
 n=6;
 
 

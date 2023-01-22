@@ -1,4 +1,4 @@
-///scrShaperFlower(theta,n)
+///shaper_flower(theta,n)
 
 ///Shaper scripts return a pair of values corresponding to the X and Y position of a point on a parametric curve
 ///theta goes from 0 to 1

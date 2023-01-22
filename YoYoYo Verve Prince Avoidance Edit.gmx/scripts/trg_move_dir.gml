@@ -1,5 +1,4 @@
-<<<<<<<< HEAD:YoYoYo Verve Prince Avoidance Edit.gmx/scripts/trgMoveDir.gml
-/// trgMoveDir(dir, speed);
+/// trg_move_dir(dir, speed);
 /**
     * Sets an object's movement defined by direction and speed.
     * 
@@ -7,14 +6,8 @@
     * @param {float} speed - Speed to set
     * 
 */
-========
-///trg_move_dir(type/dir, speed)
-//Sets an object's movement defined by direction and speed.
-//Arguments:
-//1. direction - degrees
-//2. speed
 
->>>>>>>> upstream/main:YoYoYo Verve Prince Avoidance Edit.gmx/scripts/trg_move_dir.gml
+
 if (!global.makingTrigger)
 {
     switch(argument[0])

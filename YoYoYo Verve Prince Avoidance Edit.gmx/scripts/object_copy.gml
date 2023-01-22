@@ -1,4 +1,4 @@
-/// scrCopy(obj)
+/// object_copy(obj)
 //Copies the instance and its default variables
 var obj = argument0;
 

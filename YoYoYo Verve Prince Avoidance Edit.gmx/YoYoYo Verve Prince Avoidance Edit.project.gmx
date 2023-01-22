@@ -314,34 +314,33 @@
         <script>scripts\draw_text_outline.gml</script>
         <script>scripts\draw_set_text.gml</script>
       </scripts>
-      <scripts name="Avoidance">
-        <script>scripts\spawn_shape.gml</script>
-        <script>scripts\spawn_circle.gml</script>
-      </scripts>
       <scripts name="IWPO Compatibility">
-        <script>scripts\scrSaveGame.gml</script>
         <script>scripts\scrLoadGame.gml</script>
+        <script>scripts\scrSaveGame.gml</script>
       </scripts>
       <script>scripts\ternary.gml</script>
       <script>scripts\print.gml</script>
       <script>scripts\string_concat.gml</script>
+      <script>scripts\rlerp.gml</script>
+      <script>scripts\is_every.gml</script>
+      <script>scripts\esign.gml</script>
     </scripts>
     <scripts name="Avoidance Core">
       <script>scripts\avoidance_add_debug_key.gml</script>
       <script>scripts\avoidance_add_attack.gml</script>
     </scripts>
     <scripts name="Avoidance Utility">
-      <script>scripts\rlerp.gml</script>
-      <script>scripts\esign.gml</script>
-      <script>scripts\scrBlockBreak.gml</script>
-      <script>scripts\scrBlockCreate.gml</script>
+      <script>scripts\block_break.gml</script>
+      <script>scripts\block_create.gml</script>
       <script>scripts\instance_create_ext.gml</script>
-      <script>scripts\scrTraceTrajectory.gml</script>
-      <script>scripts\scrTracerAttach.gml</script>
-      <script>scripts\scrMake3DCircle.gml</script>
-      <script>scripts\scrMake3DShape.gml</script>
-      <script>scripts\scrMake3DCircleExt.gml</script>
-      <script>scripts\scrCopy.gml</script>
+      <script>scripts\trace_trajectory.gml</script>
+      <script>scripts\tracer_attach.gml</script>
+      <script>scripts\spawn_3D_circle.gml</script>
+      <script>scripts\spawn_3D_shape.gml</script>
+      <script>scripts\spawn_3D_circle_ext.gml</script>
+      <script>scripts\spawn_shape.gml</script>
+      <script>scripts\spawn_circle.gml</script>
+      <script>scripts\object_copy.gml</script>
     </scripts>
     <scripts name="Instance Manipulation">
       <script>scripts\instance_change_alpha.gml</script>
@@ -385,16 +384,16 @@
       <script>scripts\tween_sine_out.gml</script>
     </scripts>
     <scripts name="Shape Curves">
-      <script>scripts\scrShaperCircle.gml</script>
-      <script>scripts\scrShaperTeardrop.gml</script>
-      <script>scripts\scrShaperGear.gml</script>
-      <script>scripts\scrShaperIdentity.gml</script>
-      <script>scripts\scrShaperSpiral.gml</script>
-      <script>scripts\scrShaperFlower.gml</script>
-      <script>scripts\scrShaperShape.gml</script>
-      <script>scripts\scrShaperSawblade.gml</script>
-      <script>scripts\scrShaperHeart.gml</script>
-      <script>scripts\scrShaperStar.gml</script>
+      <script>scripts\shaper_circle.gml</script>
+      <script>scripts\shaper_teardrop.gml</script>
+      <script>scripts\shaper_gear.gml</script>
+      <script>scripts\shaper_identity.gml</script>
+      <script>scripts\shaper_spiral.gml</script>
+      <script>scripts\shaper_flower.gml</script>
+      <script>scripts\shaper_shape.gml</script>
+      <script>scripts\shaper_sawblade.gml</script>
+      <script>scripts\shaper_heart.gml</script>
+      <script>scripts\shaper_star.gml</script>
     </scripts>
     <scripts name="RNG Control">
       <script>scripts\rng_controller_create.gml</script>
@@ -405,6 +404,7 @@
       <script>scripts\scrApplyShaderEffect.gml</script>
     </scripts>
     <scripts name="Tutorials">
+      <script>scripts\TUTORIAL_BasicAttackGuide.gml</script>
       <script>scripts\TUTORIAL_YourFirstAvoidance.gml</script>
     </scripts>
   </scripts>

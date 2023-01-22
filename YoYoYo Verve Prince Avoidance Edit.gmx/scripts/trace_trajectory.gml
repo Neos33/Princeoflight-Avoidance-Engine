@@ -1,4 +1,4 @@
-///scrTraceTrajectory(obj,steps,dist,tag)
+///trace_trajectory(obj,steps,dist,tag)
 
 /**
     * Traces an object's trajectory with other objects for a specified amount of frames.
@@ -21,7 +21,7 @@
     * bullet.direction=random(360);
     * bullet.gravity = 0.4;
     * 
-    * with(bullet) scrTraceTrajectory(objAvoidanceBullet, 80, 16, "trace");
+    * with(bullet) trace_trajectory(objAvoidanceBullet, 80, 16, "trace");
 
 */
 

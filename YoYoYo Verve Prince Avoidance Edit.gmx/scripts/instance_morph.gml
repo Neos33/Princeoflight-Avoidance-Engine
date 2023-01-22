@@ -4,7 +4,7 @@
     *
     * New instance commands override existing ones.
     *
-    * @param {instanceID} targetId - The 3D shape instance to morph(returned by {@link scrMake3DShape})
+    * @param {instanceID} targetId - The 3D shape instance to morph(returned by {@link spawn_3D_shape})
     * @param {shaper} targetShape - The shape function to morph into.
     * @param {int} targetN - The amount of edges of the target shape.
     * @param {integer} duration - The duration of the change, in frames.

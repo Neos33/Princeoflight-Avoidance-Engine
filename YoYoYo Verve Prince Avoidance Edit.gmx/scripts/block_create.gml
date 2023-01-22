@@ -1,4 +1,4 @@
-///scrBlockCreate(x,y,layer,tileset,tileX,tileY)
+///block_create(x,y,layer,tileset,tileX,tileY)
 /**
     * Adds a tile to the specified layer and adds a block at that space.
     * @param {float} x - The X position to create a block at.
@@ -12,7 +12,7 @@
     * //The following code creates a block at position (0,0) (top left corner of the room)
     * //and adds a tile at layer 10000000 at that position.
     * //The tile is taken from the tileset bAllTiles at position (32,32).
-    * scrBlockCreate(0,0,10000000,bAlltiles,32,32);
+    * block_create(0,0,10000000,bAlltiles,32,32);
     * 
 */
 var X = argument[0];

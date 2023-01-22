@@ -1,4 +1,4 @@
-///scrTracerAttach(obj,spawnObj,steps,dist,tag)
+///tracer_attach(obj,spawnObj,steps,dist,tag)
 /**
     * Attaches a tracer to an object which spawns an instance of an object ``obj`` every ``dist`` pixels the instance moves, for a specified amount of frames.
     * 

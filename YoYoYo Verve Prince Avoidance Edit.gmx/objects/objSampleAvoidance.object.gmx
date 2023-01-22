@@ -133,7 +133,7 @@ if(instance_number(object_index)&gt;1) {
     exit;
 }
 
-scrPlayMusic(musicID,false);
+music_play(musicID,false);
 
 
 //Reset infjump, nodeath and player gravity to avoid replay/restart bugs
@@ -328,6 +328,7 @@ if(global.debugMode){
             <kind>1</kind>
             <string>///Attacks
 var ct=t-attackTimings[|attack];
+var gt=t;
 var BT=BEAT_TIME;
 
 if(!instance_exists(objPlayer)) exit;
@@ -335,6 +336,9 @@ if(!instance_exists(objPlayer)) exit;
 switch(attackNames[|attack]){ //Main attack loop
     case "ATTACK1":
     {   
+    if(is_every(ct,BT)){
+       spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flower);
+     }
     if(ct==1) rngController = rng_controller_create(4);
         else if(ct&gt;1&amp;&amp;ct mod 5 == 0){ //An example of an RNG-controlled barrage attack
             var bullet = instance_create_ext(400,304,objAvoidanceBullet,random_range(4,6),random_range_controlled(0,360,rngController),1,"test");
@@ -348,7 +352,7 @@ switch(attackNames[|attack]){ //Main attack loop
                 bullet.tag="curve";
                 bullet.sprite_index=sprBulletArrowhead;
                 bullet.image_angle=bullet.direction;
-                scrTracerAttach(bullet,objAvoidanceBullet,300,16,"tail");
+                tracer_attach(bullet,objAvoidanceBullet,300,16,"tail");
                 instance_shrink_out(bullet,300);
             }
         }
@@ -366,8 +370,8 @@ switch(attackNames[|attack]){ //Main attack loop
     {
         if(ct==1){
             var ca = random(360);
-            scrMakeShapes(400,304,ca,6,30,6,objAvoidanceBullet,0,scrShaperSpiral); //An example of using scrMakeShapes with custom shapes
-            scrMakeShapes(400,304,ca+180,6,30,6,objAvoidanceBullet,0,scrShaperSpiral);
+            spawn_shape(400,304,ca,6,30,6,objAvoidanceBullet,0,shaper_spiral); //an example of using spawn_shape with custom shapes
+            spawn_shape(400,304,ca+180,6,30,6,objAvoidanceBullet,0,shaper_spiral);
             
         }
         break;
@@ -376,14 +380,13 @@ switch(attackNames[|attack]){ //Main attack loop
     {
         if(ct==1){ //An example of creating a 3D circle that morphs into a heart over time
         
-            var heart = scrMake3DShape(400,304,sprBulletRazzor,32,0,0,0.5,40,0,scrShaperCircle,5);
+            var heart = spawn_3D_shape(400,304,sprBulletRazzor,32,0,0,0.5,40,0,shaper_circle,5);
             heart.dPhase=0.0;
             heart.z=-100;
             heart.killer=true;
             heart.dTheta=0.25;
             instance_scale(heart,200,400,tween_linear);
-            instance_morph(heart,scrShaperHeart,5,400,tween_sine_out);
-            
+            instance_morph(heart,shaper_heart,5,400,tween_sine_out);
         }
         break;
     }

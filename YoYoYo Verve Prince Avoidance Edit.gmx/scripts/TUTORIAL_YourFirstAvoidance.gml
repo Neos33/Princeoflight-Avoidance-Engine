@@ -43,7 +43,7 @@
     * avoidance_add_attack("END",2000);
     * ```
     * 
-    * The {@link avoidance_add_attack} scripts are used to define timings for your attacks, in order. You can add as many segments as you want, however, the final attack you and should always be named "END" - as that is what handles properly finishing the avoidance and warping the player to the end room.
+    * The {@link avoidance_add_attack} scripts are used to define timings for your attacks, in order. You can add as many segments as you want, however, the final attack should always be named "END" - as that is what handles properly finishing the avoidance and warping the player to the end room.
     * The names of the segments will then be used in the Step event to determine which block of code corresponds to which attack.
     *     
     * **Step 5 - Code the attacks**
@@ -65,5 +65,23 @@
     *   ...
     * ```
     *
+    * Here, aside from the absolute timer **gt** the event has a local variable named ``ct``, which is the **relative** timer, counted **from the start of the current attack**. It is recommended to use the latter, and set attack start timings in the Create event (see Step 4).
+    * You can use the {@link is_every} function to execute blocks of code every X frames, for example,
+    * ```
+    * //This code spawns a flower from the center of the screen every beat. The bullets are tagged "flower" which can then be used to manipulate them selectively afterwards
+    * if(is_every(ct,BT)){
+    *   spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flower);
+    * }
+    * ```
+    * 
+    * You can learn more about designing some of the basic attacks in the {@link TUTORIAL_BasicAttackGuide|Basic Attack Guide.}
+    * 
+    * **Step 6 - Debugging and playtesting**
+    * 
+    * When playing the game in debug mode, a timeline will appear on top of the screen, with the attack timings marked. Clicking on it will allow you to instantly skip to any given timing on the avoidance. This is very useful for debugging and playtesting the game, where you often need to test attacks individually.
+    *   
+    * **Conclusion**
+    * 
+    * With that, your first avoidance is now done! Feel free to experiment with different styles of visuals and attacks, as well as all of the different scripts featured in the engine!
     * 
 */

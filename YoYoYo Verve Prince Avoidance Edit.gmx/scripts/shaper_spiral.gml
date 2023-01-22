@@ -1,4 +1,4 @@
-///scrShaperSpiral(theta,n)
+///shaper_spiral(theta,n)
 
 ///Shaper scripts return a pair of values corresponding to the polar position of a point on a parametric curve
 ///theta goes from 0 to 1

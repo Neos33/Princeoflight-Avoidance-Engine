@@ -1,4 +1,4 @@
-/// scrBlockBreak(x,y, layer);
+/// block_break(x,y, layer);
 /**
     * Removes a tile in the layer and breaks a block at that space.
     *
@@ -9,7 +9,7 @@
     * @example
     * //The following code breaks a block at position (0,0) (top left corner of the room)
     * //and removes a tile at layer 10000000 at that position.
-    * scrBlockBreak(0,0,10000000);
+    * block_break(0,0,10000000);
     * 
     
 */

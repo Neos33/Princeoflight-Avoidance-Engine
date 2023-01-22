@@ -1,4 +1,4 @@
-/// scrMake3DShape(x,y,sprite,index,radius,angle,dAngle,numBullets,tag,shaper,N);
+/// spawn_3D_shape(x,y,sprite,index,radius,angle,dAngle,numBullets,tag,shaper,N);
 //TODO: add a demonstration of how the Euler angles (angle, theta, phi) work, 
 //either through a room or through an external image
 /**

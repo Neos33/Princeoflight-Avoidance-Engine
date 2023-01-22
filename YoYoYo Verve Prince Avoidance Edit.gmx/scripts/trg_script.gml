@@ -1,5 +1,5 @@
-<<<<<<<< HEAD:YoYoYo Verve Prince Avoidance Edit.gmx/scripts/trgScript.gml
-/// trgScript(script, [with], [arg0], [arg1], [arg2]);
+
+/// trg_script(script, [with], [arg0], [arg1], [arg2]);
 /**
     * Calls a script when triggered.
     * 
@@ -10,17 +10,7 @@
     * @param [arg2] - the third argument to be passed.
     * 
 */
-========
-///trg_script(type/script, [with], [arg0], [arg1], [arg2])
-//Calls a script when triggered.
-//Arguments:
-//1. script
-//2. [with] - which object calls the script. (id by default, meaning the objTriggerManager)
-//3. [arg0] - first argument to be passed to the script. (not passed by default)
-//4. [arg1]
-//5. [arg2]
 
->>>>>>>> upstream/main:YoYoYo Verve Prince Avoidance Edit.gmx/scripts/trg_script.gml
 if (!global.makingTrigger)
 {
     switch(argument[0])

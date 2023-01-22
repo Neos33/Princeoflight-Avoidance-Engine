@@ -1,4 +1,4 @@
-///scrMakeShapes(x, y, angle, edges, numprojectiles, speed, obj, opt_tag, opt_shaper)
+///spawn_shape(x, y, angle, edges, numprojectiles, speed, obj, opt_tag, opt_shaper)
 //Spawns a custom shape.
 //OPTIONAL: Pass a Shaper script as the last argument to define which shape to spawn
 //Returns an array of bullets
@@ -34,3 +34,4 @@ for(var i=0;i<spawnNum;i++){
 }
 
 return aaa;
+

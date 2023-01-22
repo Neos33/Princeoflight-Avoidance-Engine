@@ -59,7 +59,7 @@ exScale=image_xscale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(killer) scrKillPlayer();
+            <string>if(killer) player_kill();
 </string>
           </argument>
         </arguments>

@@ -1,4 +1,4 @@
-///scrMake3DCircle(x,y,sprite,index,radius,angle,dAngle,numBullets,tag);
+///spawn_3D_circle(x,y,sprite,index,radius,angle,dAngle,numBullets,tag);
 //TODO: add a demonstration of how the Euler angles (angle, theta, phi) work, 
 //either through a room or through an external image
 

@@ -1,5 +1,4 @@
-<<<<<<<< HEAD:YoYoYo Verve Prince Avoidance Edit.gmx/scripts/trgMove.gml
-/// trgMove(hspeed, vspeed);
+/// trg_move(hspeed, vspeed);
 /**
     * Sets an object's h/vspeeds when triggered.
     * 
@@ -7,14 +6,6 @@
     * @param {float} vspeed - The vspeed of the object to be set.
     * 
 */
-========
-///trg_move(type/hspeed, vspeed)
-//Sets an object's h/vspeeds when triggered.
-//Arguments:
-//1. hspeed
-//2. vspeed
-
->>>>>>>> upstream/main:YoYoYo Verve Prince Avoidance Edit.gmx/scripts/trg_move.gml
 if (!global.makingTrigger)
 {
     switch(argument[0])

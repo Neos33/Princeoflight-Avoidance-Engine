@@ -99,7 +99,7 @@ image_alpha=baseAlpha*imageAlpha;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(killer&amp;&amp;z&lt;=0) scrKillPlayer();
+            <string>if(killer&amp;&amp;z&lt;=0) player_kill();
 </string>
           </argument>
         </arguments>
