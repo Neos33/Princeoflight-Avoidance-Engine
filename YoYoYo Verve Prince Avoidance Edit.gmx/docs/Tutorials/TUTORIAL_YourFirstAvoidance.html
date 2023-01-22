@@ -63,7 +63,7 @@
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Trigger/scrMakeTrigger.html" >scrMakeTrigger</a>
+					<a class="btn btn-link ml-4" href="../Trigger/trg_move.html" >trg_move</a>
 				
 			</li>
 		
@@ -71,7 +71,7 @@
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Trigger/trgMove.html" >trgMove</a>
+					<a class="btn btn-link ml-4" href="../Trigger/trg_move_dir.html" >trg_move_dir</a>
 				
 			</li>
 		
@@ -79,15 +79,40 @@
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Trigger/trgMoveDir.html" >trgMoveDir</a>
+					<a class="btn btn-link ml-4" href="../Trigger/trg_script.html" >trg_script</a>
 				
 			</li>
 		
 	
+
+
+				</ul>
+			</div>
+		
+	
+		
+			<li class="list-group-item d-flex justify-content-between ">
+				
+
+				
+					<a class="btn btn-link" href="../Utility.html" >
+						<i class="material-icons float-left mr-3">folder</i><span>Utility</span>
+					</a>
+				
+
+				<button class="btn btn-link text-dark collapsed" data-toggle="collapse" data-target="#tree-Utility" aria-expanded="false" aria-controls="tree-Utility">
+					<i class="material-icons" >expand_more</i>
+					<span class="sr-only">Expand folder Utility</span>
+				</button>
+			</li>
+			<div class="collapse " id="tree-Utility">
+				<ul class="list-group list-group" >
+					
+	
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Trigger/trgScript.html" >trgScript</a>
+					<a class="btn btn-link ml-4" href="../Utility/is_every.html" >is_every</a>
 				
 			</li>
 		
@@ -116,6 +141,14 @@
 			<div class="collapse " id="tree-Avoidance Core">
 				<ul class="list-group list-group" >
 					
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Core/avoidance_add_debug_key.html" >avoidance_add_debug_key</a>
+				
+			</li>
+		
 	
 		
 			<li class="list-group-item ">
@@ -153,7 +186,7 @@
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrBlockBreak.html" >scrBlockBreak</a>
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/block_break.html" >block_break</a>
 				
 			</li>
 		
@@ -161,7 +194,7 @@
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrBlockCreate.html" >scrBlockCreate</a>
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/block_create.html" >block_create</a>
 				
 			</li>
 		
@@ -177,7 +210,7 @@
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrTraceTrajectory.html" >scrTraceTrajectory</a>
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/trace_trajectory.html" >trace_trajectory</a>
 				
 			</li>
 		
@@ -185,7 +218,7 @@
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrTracerAttach.html" >scrTracerAttach</a>
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/tracer_attach.html" >tracer_attach</a>
 				
 			</li>
 		
@@ -193,7 +226,7 @@
 		
 			<li class="list-group-item ">
 				
-					<a class="btn btn-link ml-4" href="../Avoidance Utility/scrMake3DShape.html" >scrMake3DShape</a>
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/spawn_3D_shape.html" >spawn_3D_shape</a>
 				
 			</li>
 		
@@ -435,6 +468,14 @@
 					
 	
 		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="TUTORIAL_BasicAttackGuide.html" >TUTORIAL_BasicAttackGuide</a>
+				
+			</li>
+		
+	
+		
 			<li class="list-group-item active">
 				
 					<div class="btn ml-4">TUTORIAL_YourFirstAvoidance<span class="sr-only">(current)</span></div>
@@ -542,8 +583,33 @@ Additionally, there should be an instance of an object <em>objAvoidanceDrawContr
 avoidance_add_attack("ATTACK2",500);
 avoidance_add_attack("ATTACK3",1000);
 avoidance_add_attack("END",2000);</code></pre>
-<p>The <a href="../Avoidance Core/avoidance_add_attack.html">avoidance_add_attack</a> scripts are used to define timings for your attacks, in order. You can add as many segments as you want, however, the final attack you and should always be named "END" - as that is what handles properly finishing the avoidance and warping the player to the end room.
+<p>The <a href="../Avoidance Core/avoidance_add_attack.html">avoidance_add_attack</a> scripts are used to define timings for your attacks, in order. You can add as many segments as you want, however, the final attack should always be named "END" - as that is what handles properly finishing the avoidance and warping the player to the end room.
 The names of the segments will then be used in the Step event to determine which block of code corresponds to which attack.</p>
+<p><strong>Step 5 - Code the attacks</strong></p>
+<p>Finally, we can start making the attacks themselves! To do this, go to Step-&gt;"Attacks" event of your avoidance object. You will see a switch statement that looks something like this:</p>
+<pre><code>switch(attackNames[|attack]){ //Main attack loop
+case "ATTACK1":
+{
+//code for the attack named "ATTACK1;
+break;
+}
+case "ATTACK2":
+{
+//code for attack named "ATTACK2;
+break;
+}
+...</code></pre>
+<p>Here, aside from the absolute timer <strong>gt</strong> the event has a local variable named <code>ct</code>, which is the <strong>relative</strong> timer, counted <strong>from the start of the current attack</strong>. It is recommended to use the latter, and set attack start timings in the Create event (see Step 4).
+You can use the <a href="../Utility/is_every.html">is_every</a> function to execute blocks of code every X frames, for example,</p>
+<pre><code>//This code spawns a flower from the center of the screen every beat. The bullets are tagged "flower" which can then be used to manipulate them selectively afterwards
+if(is_every(ct,BT)){
+spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flower);
+}</code></pre>
+<p>You can learn more about designing some of the basic attacks in the <a href="TUTORIAL_BasicAttackGuide.html">Basic Attack Guide.</a></p>
+<p><strong>Step 6 - Debugging and playtesting</strong></p>
+<p>When playing the game in debug mode, a timeline will appear on top of the screen, with the attack timings marked. Clicking on it will allow you to instantly skip to any given timing on the avoidance. This is very useful for debugging and playtesting the game, where you often need to test attacks individually.</p>
+<p><strong>Conclusion</strong></p>
+<p>With that, your first avoidance is now done! Feel free to experiment with different styles of visuals and attacks, as well as all of the different scripts featured in the engine!</p>
     </div>
 
 
@@ -573,7 +639,7 @@ The names of the segments will then be used in the Step event to determine which
         </div>
         <footer class="footer bg-light text-center text-muted py-4">
             <div>Documentation generated with <a href="https://jhm-ciberman.github.io/docs_gm/" target="_blank" class="text-primary">docs_gm</a></div>
-            <div>Last updated at Wed Jan 18 2023</div>
+            <div>Last updated at Sun Jan 22 2023</div>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -7,7 +7,7 @@
     * 
     * This is useful for creating structures like curves and tendrils.
     * 
-    * Unlike {@link scrTracerAttach}, this executes the specified amount of steps immediately rather than over time.
+    * Unlike {@link tracer_attach}, this executes the specified amount of steps immediately rather than over time.
     * @param {objectID} obj - The type of the object to spawn.
     * @param {int} steps - The amount of steps to trace for.
     * @param {float} dist - The distance at which to spawn the objects.
