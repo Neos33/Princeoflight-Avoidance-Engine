@@ -338,7 +338,7 @@ switch(attackNames[|attack]){ //Main attack loop
     {   
     if(is_every(ct,BT)){
        spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flower);
-     }
+    }
     if(ct==1) rngController = rng_controller_create(4);
         else if(ct&gt;1&amp;&amp;ct mod 5 == 0){ //An example of an RNG-controlled barrage attack
             var bullet = instance_create_ext(400,304,objAvoidanceBullet,random_range(4,6),random_range_controlled(0,360,rngController),1,"test");
@@ -347,6 +347,7 @@ switch(attackNames[|attack]){ //Main attack loop
         }
         
         if(ct==1){
+            //view_rotate(180,200,tween_sine_inout);
             for(var i=0;i&lt;8;i++){ //An example of using a tracer to create a flower pattern
                 var bullet = instance_create_ext(400,304,objAvoidanceBullet,3,360*i/8,1,"test");
                 bullet.tag="curve";

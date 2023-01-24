@@ -8,7 +8,7 @@ var smoother;
 if( argument_count > 4 ) {
     smoother = argument[4];
 } else {
-    smoother = tween_sine_inout
+    smoother = tween_sine_inout;
 }
 var command = instance_create( 0, 0, oViewMoveScaleCommand );
 

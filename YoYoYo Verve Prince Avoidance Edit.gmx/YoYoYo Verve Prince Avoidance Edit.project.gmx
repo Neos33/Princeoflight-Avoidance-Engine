@@ -362,6 +362,7 @@
       <script>scripts\view_offset.gml</script>
       <script>scripts\view_scale.gml</script>
       <script>scripts\view_screen_shake.gml</script>
+      <script>scripts\view_rotate.gml</script>
       <script>scripts\view_set_scale.gml</script>
     </scripts>
     <scripts name="Easing">
@@ -541,6 +542,7 @@
       <objects name="View Manipulation">
         <object>objects\oViewMoveScaleCommand</object>
         <object>objects\oViewOffsetCommand</object>
+        <object>objects\oViewRotateCommand</object>
         <object>objects\oViewScaleCommand</object>
         <object>objects\oViewScreenShakeCommand</object>
       </objects>
