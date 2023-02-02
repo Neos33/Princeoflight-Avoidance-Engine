@@ -169,6 +169,9 @@ music_play(musicID,false);
 global.noDeath=false; 
 global.infJump=false; 
 global.grav=1;
+
+
+highlight=-1;
 </string>
           </argument>
         </arguments>
@@ -323,6 +326,19 @@ if(global.debugMode){
         avoidance_jump_to_timing(trackPos);
     }
     
+    //Jump to a debug snap by clicking on it
+    var spacing = 32;
+    for(var i=0;i&lt;global.numDebugSnaps;++i){
+        var snapX=room_width-64;
+        var snapY=64+spacing*(i+1)
+        if(point_in_rectangle(mouse_x,mouse_y,snapX,snapY,snapX+64,snapY+spacing)){
+            highlight=i;
+            if(mouse_check_button_pressed(mb_left)){
+                var trackPos = global.debugSnaps[i];
+                avoidance_jump_to_timing(trackPos);
+            }
+        }
+    }
     //User made debug keys
     for(var i=0;i&lt;numDebugKeys;i++){
         if(keyboard_check_pressed(debugKeys[|i])){
@@ -563,12 +579,15 @@ if(global.debugMode){
     draw_text(room_width-64,64,t);
     var spacing=32;
     for(var i=0;i&lt;global.numDebugSnaps;++i){
+        if(highlight==i) draw_set_colour(c_yellow);
         draw_text(room_width-64,64+spacing*(i+1),global.debugSnaps[i]);
+        draw_set_colour(c_white);
         var markPosition=lerp(32,room_width-32,(global.debugSnaps[i]-startTiming)/(endTiming-startTiming));
         draw_set_alpha(0.7);
         draw_rectangle_colour(markPosition-0.8,32+8-12,markPosition+0.8,32+8+12,c_white,c_white,c_white,c_white,0);
         draw_set_alpha(1);
     }
+    highlight=-1;
 }
 
 </string>
