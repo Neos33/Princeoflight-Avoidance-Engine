@@ -95,39 +95,6 @@
 				
 
 				
-					<a class="btn btn-link" href="../Utility.html" >
-						<i class="material-icons float-left mr-3">folder</i><span>Utility</span>
-					</a>
-				
-
-				<button class="btn btn-link text-dark collapsed" data-toggle="collapse" data-target="#tree-Utility" aria-expanded="false" aria-controls="tree-Utility">
-					<i class="material-icons" >expand_more</i>
-					<span class="sr-only">Expand folder Utility</span>
-				</button>
-			</li>
-			<div class="collapse " id="tree-Utility">
-				<ul class="list-group list-group" >
-					
-	
-		
-			<li class="list-group-item ">
-				
-					<a class="btn btn-link ml-4" href="../Utility/is_every.html" >is_every</a>
-				
-			</li>
-		
-	
-
-
-				</ul>
-			</div>
-		
-	
-		
-			<li class="list-group-item d-flex justify-content-between ">
-				
-
-				
 					<a class="btn btn-link" href="../Avoidance Core.html" >
 						<i class="material-icons float-left mr-3">folder</i><span>Avoidance Core</span>
 					</a>
@@ -227,6 +194,14 @@
 			<li class="list-group-item ">
 				
 					<a class="btn btn-link ml-4" href="../Avoidance Utility/spawn_3D_shape.html" >spawn_3D_shape</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/on_beat.html" >on_beat</a>
 				
 			</li>
 		
@@ -600,12 +575,11 @@ break;
 }
 ...</code></pre>
 <p>Here, aside from the absolute timer <strong>gt</strong> the event has a local variable named <code>ct</code>, which is the <strong>relative</strong> timer, counted <strong>from the start of the current attack</strong>. It is recommended to use the latter, and set attack start timings in the Create event (see Step 4).
-You can use the <a href="../Utility/is_every.html">is_every</a> function to execute blocks of code every X frames, for example,</p>
+You can use the <a href="../Avoidance Utility/on_beat.html">on_beat</a> function to execute blocks of code every X frames, for example,</p>
 <pre><code>//This code spawns a flower from the center of the screen every beat. The bullets are tagged "flower" which can then be used to manipulate them selectively afterwards
-if(is_every(ct,BT)){
+if(on_beat(ct,BT)){
 spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flower);
 }</code></pre>
-<p>You can learn more about designing some of the basic attacks in the <a href="TUTORIAL_BasicAttackGuide.html">Basic Attack Guide.</a></p>
 <p><strong>Step 6 - Debugging and playtesting</strong></p>
 <p>When playing the game in debug mode, a timeline will appear on top of the screen, with the attack timings marked. Clicking on it will allow you to instantly skip to any given timing on the avoidance. This is very useful for debugging and playtesting the game, where you often need to test attacks individually.</p>
 <p><strong>Conclusion</strong></p>
@@ -639,7 +613,7 @@ spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flowe
         </div>
         <footer class="footer bg-light text-center text-muted py-4">
             <div>Documentation generated with <a href="https://jhm-ciberman.github.io/docs_gm/" target="_blank" class="text-primary">docs_gm</a></div>
-            <div>Last updated at Sun Jan 22 2023</div>
+            <div>Last updated at Thu Feb 02 2023</div>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

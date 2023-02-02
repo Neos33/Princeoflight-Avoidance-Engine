@@ -95,39 +95,6 @@
 				
 
 				
-					<a class="btn btn-link" href="../Utility.html" >
-						<i class="material-icons float-left mr-3">folder</i><span>Utility</span>
-					</a>
-				
-
-				<button class="btn btn-link text-dark collapsed" data-toggle="collapse" data-target="#tree-Utility" aria-expanded="false" aria-controls="tree-Utility">
-					<i class="material-icons" >expand_more</i>
-					<span class="sr-only">Expand folder Utility</span>
-				</button>
-			</li>
-			<div class="collapse " id="tree-Utility">
-				<ul class="list-group list-group" >
-					
-	
-		
-			<li class="list-group-item ">
-				
-					<a class="btn btn-link ml-4" href="../Utility/is_every.html" >is_every</a>
-				
-			</li>
-		
-	
-
-
-				</ul>
-			</div>
-		
-	
-		
-			<li class="list-group-item d-flex justify-content-between ">
-				
-
-				
 					<a class="btn btn-link" href="../Avoidance Core.html" >
 						<i class="material-icons float-left mr-3">folder</i><span>Avoidance Core</span>
 					</a>
@@ -227,6 +194,14 @@
 			<li class="list-group-item ">
 				
 					<a class="btn btn-link ml-4" href="../Avoidance Utility/spawn_3D_shape.html" >spawn_3D_shape</a>
+				
+			</li>
+		
+	
+		
+			<li class="list-group-item ">
+				
+					<a class="btn btn-link ml-4" href="../Avoidance Utility/on_beat.html" >on_beat</a>
 				
 			</li>
 		
@@ -559,8 +534,54 @@
 
     <div class ="description">
         <p><b>Description: </b></p>
-        In this guide, we will be covering some examples of how to use this engine's features to create some basic types of avoidance attacks.
-Keep in mind that those are only basic examples, and a lot more advanced and complex attacks can be created. The possibilities are endless!
+        <p><strong>THIS TUTORIAL IS WORK IN PROGRESS! More chapters will be added as the engine updates.</strong></p>
+<p>In this guide, we will be covering some examples of how to use this engine's features to create some basic types of avoidance attacks.
+We will be going through basic RNG attacks with RNG control, as well as some prettier-looking patterns that you could implement in your games.</p>
+<p>All of the following code is placed in the Step event of your avoidance object, inside the <code>case</code> statement for your attack. This assumes you have read <a href="TUTORIAL_YourFirstAvoidance.html">the avoidance setup guide</a>, so if you haven't, make sure to read it as well.</p>
+<p><strong>Chapter 1 - Basic RNG Attacks and RNG control</strong></p>
+<p>One of the most basic attacks you can implement is spawning a bullet every set amount of frames. You can use the (@link on_beat) function, as follows:</p>
+<pre><code>//This example spawns a bullet from the center of the screen every 10 frames.
+var spawnInterval = 10;
+if(on_beat(ct, 10)){
+var spawnX=400;
+var spawnY=304;
+var bullet = instance_create(spawnX,spawnY,objBullet);
+bullet.speed=random_range(4,6);
+bullet.direction=random(360);
+bullet.tag="random_spawn";
+}</code></pre>
+<p>Sometimes, you may want to control the RNG your attacks have, to guarantee no random walls or large, impassable clusters of bullets may occur.</p>
+<p>For this, you will need to first create an RNG controller object using <a href="../RNG Control/rng_controller_create.html">rng_controller_create</a>, as follows:</p>
+<pre><code>//This example creates an RNG controller on the first frame of the attack.
+if(ct==1) RNGController = rng_controller_create();</code></pre>
+<p>Then, you can use this newly-created object for the <a href="../RNG Control/random_range_controlled.html">random_range_controlled</a> function, as follows:</p>
+<pre><code>//This example spawns a bullet from the center of the screen every 10 frames, with the RNG handled by the RNG controller object.
+var spawnInterval = 10;
+if(ct&gt;=1&amp;&amp;on_beat(ct, 10)){
+var spawnX=400;
+var spawnY=304;
+var bullet = instance_create(spawnX,spawnY,objBullet);
+bullet.speed=random_range(4,6);
+bullet.direction=random_range_controlled(0,360,RNGController); //Use the RNG controller instead of just calling random(360);
+bullet.tag="random_spawn";
+}</code></pre>
+<p><strong>Chapter 2 - The Tag System</strong></p>
+<p>The tag system can be used to separate behaviours of different objects. For example, if you want to have a "spawner" bullet that creates other bullets as it moves, you will want only the kinds of bullets tagged as such to execute the spawn code.</p>
+<p>To use it, just set the bullet's built-in tag variable after creating it, as follows:</p>
+<pre><code>//This example creates a bullet on the first frame of the attack, and tags it as "spawner"
+if(ct==1){
+var spawner = instance_create(400,304,objAvoidanceBullet);
+spawner.tag = "spawner";
+}</code></pre>
+<p>Then, when using the <code>with</code> statement, you can check for the tag of the bullet, as follows:</p>
+<pre><code>//This example makes every bullet tagged as "spawner" spawn another, non-spawner bullet every frame.
+with(objAvoidanceBullet){
+if(tag=="spawner"){
+var bullet = instance_create(x,y,objAvoidanceBullet);
+bullet.speed=random_range(4,6);
+bullet.direction=random(360);
+}
+}</code></pre>
     </div>
 
 
@@ -594,7 +615,7 @@ Keep in mind that those are only basic examples, and a lot more advanced and com
         </div>
         <footer class="footer bg-light text-center text-muted py-4">
             <div>Documentation generated with <a href="https://jhm-ciberman.github.io/docs_gm/" target="_blank" class="text-primary">docs_gm</a></div>
-            <div>Last updated at Sun Jan 22 2023</div>
+            <div>Last updated at Thu Feb 02 2023</div>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -7,3 +7,20 @@
     * @param {float} opt_startX - The X position to teleport the player to. Default is -1 (don't move the player)
     * @param {float} opt_startY - The Y position to teleport the player to. Default is -1 (don't move the player)
 */
+
+
+var key=argument[0];
+var timing=argument[1];
+var opt_startX=-1;
+var opt_startY=-1;
+
+if(argument_count>2) opt_startX=argument[2];
+if(argument_count>3) opt_startY=argument[3];
+
+
+ds_list_add(debugKeys,key);
+ds_list_add(debugKeyTimings,timing);
+ds_list_add(debugKeyStartX,opt_startX);
+ds_list_add(debugKeyStartY,opt_startY);
+
+numDebugKeys++;

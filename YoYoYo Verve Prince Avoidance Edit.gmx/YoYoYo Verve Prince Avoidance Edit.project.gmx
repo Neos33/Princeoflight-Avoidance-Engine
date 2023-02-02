@@ -322,14 +322,16 @@
       <script>scripts\print.gml</script>
       <script>scripts\string_concat.gml</script>
       <script>scripts\rlerp.gml</script>
-      <script>scripts\is_every.gml</script>
       <script>scripts\esign.gml</script>
     </scripts>
     <scripts name="Avoidance Core">
       <script>scripts\avoidance_add_debug_key.gml</script>
       <script>scripts\avoidance_add_attack.gml</script>
+      <script>scripts\avoidance_jump_to_timing.gml</script>
     </scripts>
     <scripts name="Avoidance Utility">
+      <script>scripts\bullet_set_curving.gml</script>
+      <script>scripts\bullet_set_follow_direction.gml</script>
       <script>scripts\block_break.gml</script>
       <script>scripts\block_create.gml</script>
       <script>scripts\instance_create_ext.gml</script>
@@ -341,6 +343,7 @@
       <script>scripts\spawn_shape.gml</script>
       <script>scripts\spawn_circle.gml</script>
       <script>scripts\object_copy.gml</script>
+      <script>scripts\on_beat.gml</script>
     </scripts>
     <scripts name="Instance Manipulation">
       <script>scripts\instance_change_alpha.gml</script>

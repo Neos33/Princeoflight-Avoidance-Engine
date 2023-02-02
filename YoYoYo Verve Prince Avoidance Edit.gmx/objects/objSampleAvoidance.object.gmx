@@ -84,7 +84,6 @@ numTimings=0;
 
 attackNames=ds_list_create();
 attackTimings=ds_list_create();
-
 avoidance_add_attack("ATTACK1",0);
 avoidance_add_attack("ATTACK2",500);
 avoidance_add_attack("ATTACK3",1000);
@@ -112,12 +111,42 @@ avoidance_add_attack("END",2000);
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Set the debug keys
+
+numDebugKeys=0;
+debugKeys=ds_list_create();
+debugKeyTimings=ds_list_create();
+debugKeyStartX=ds_list_create();
+debugKeyStartY=ds_list_create();
+
+
+//Add debug keys here using avoidance_add_debug_key
+avoidance_add_debug_key(ord("1"),500);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Set up the internal variables and start the avoidance
 
 attack=0;
 
-debugSnaps[0]=0;
-numDebugSnaps=0;
+
 t=0;
 t_music=0;
 finish=false;
@@ -281,30 +310,31 @@ if(attack&lt;numTimings-1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Debug timeline
+            <string>///Debug timeline and keys
 
 if(global.debugMode){
-    if(keyboard_check_pressed(vk_space)){
-        debugSnaps[numDebugSnaps]=t;
-        numDebugSnaps++;
+    if(keyboard_check_pressed(vk_space)){ //Set a debug snap on SPACE
+        global.debugSnaps[global.numDebugSnaps]=t;
+        global.numDebugSnaps++;
         show_debug_message(string(t));
     }
-    if(point_in_rectangle(mouse_x,mouse_y,32,0,room_width-32,64)&amp;&amp;mouse_check_button_pressed(mb_left)){
+    if(point_in_rectangle(mouse_x,mouse_y,32,0,room_width-32,64)&amp;&amp;mouse_check_button_pressed(mb_left)){ //Navigate the timeline by clicking on it
         var trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
-        audio_sound_set_track_position(global.currentMusic,trackPos/50);
-        t=floor(trackPos);
-        for(var i=0;i&lt;ds_list_size(attackTimings)-1;i++){
-            if(trackPos*50&gt;attackTimings[|i]){
-                attack=i;
-                break;       
+        avoidance_jump_to_timing(trackPos);
+    }
+    
+    //User made debug keys
+    for(var i=0;i&lt;numDebugKeys;i++){
+        if(keyboard_check_pressed(debugKeys[|i])){
+            var trackPos = debugKeyTimings[|i];
+            avoidance_jump_to_timing(trackPos);
+            with(objPlayer){
+                if(other.debugKeyStartX[|i]!=-1) x = other.debugKeyStartX[|i];
+                if(other.debugKeyStartY[|i]!=-1) y = other.debugKeyStartY[|i];
             }
         }
-        with(objAvoidanceEntity) {
-            if(!child)
-            instance_destroy();
-        }
-        
     }
+    
 }
 </string>
           </argument>
@@ -336,10 +366,10 @@ if(!instance_exists(objPlayer)) exit;
 switch(attackNames[|attack]){ //Main attack loop
     case "ATTACK1":
     {   
-    if(is_every(ct,BT)){
-       spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flower);
-    }
-    if(ct==1) rngController = rng_controller_create(4);
+        if(on_beat(ct,BT)){ // An example of a simple attack that spawns a flower every beat
+           spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flower);
+        }
+        if(ct==1) rngController = rng_controller_create(4);
         else if(ct&gt;1&amp;&amp;ct mod 5 == 0){ //An example of an RNG-controlled barrage attack
             var bullet = instance_create_ext(400,304,objAvoidanceBullet,random_range(4,6),random_range_controlled(0,360,rngController),1,"test");
             bullet.sprite_index=sprBulletRazzor;
@@ -405,7 +435,11 @@ switch(attackNames[|attack]){ //Main attack loop
         }
         break;
     }
-    
+    default:
+    {
+        show_debug_message("WARNING: Attack "+attackNames[|attack]+" is empty!");
+        break;
+    }
 }
 
 
@@ -436,6 +470,11 @@ switch(attackNames[|attack]){ //Main attack loop
 
 ds_list_destroy(attackNames);
 ds_list_destroy(attackTimings);
+ds_list_destroy(debugKeys);
+ds_list_destroy(debugKeyTimings);
+ds_list_destroy(debugKeyStartX);
+ds_list_destroy(debugKeyStartY);
+
 </string>
           </argument>
         </arguments>
@@ -512,17 +551,23 @@ if(global.debugMode){
     draw_set_colour(c_white);
     draw_rectangle_colour(32,32,room_width-32,48,c_black,c_black,c_black,c_black,0);
     var barPosition=lerp(32,room_width-32,(t-startTiming)/(endTiming-startTiming));
-    draw_rectangle_colour(barPosition-4,32+8-16,barPosition+4,32+8+16,c_white,c_white,c_white,c_white,0);
-    for(var i=0;i&lt;numTimings;++i){
+    draw_rectangle_colour(barPosition-0.5,32+8-16,barPosition+0.5,32+8+16,c_white,c_white,c_white,c_white,0);
+    for(var i=0;i&lt;numTimings;++i){ //Display attack timings
         var markPosition=lerp(32,room_width-32,(attackTimings[|i]-startTiming)/(endTiming-startTiming));
-        draw_rectangle_colour(markPosition-2,32+8-16,markPosition+2,32+8+16,c_white,c_white,c_white,c_white,0);
+        draw_set_alpha(0.7);
+        draw_rectangle_colour(markPosition-1.0,32+8-16,markPosition+1.0,32+8+16,c_white,c_white,c_white,c_white,0);
+        draw_set_alpha(1);
     }
     draw_set_font(fDefault12);
     draw_set_colour(c_white);
     draw_text(room_width-64,64,t);
     var spacing=32;
-    for(var i=0;i&lt;numDebugSnaps;++i){
-        draw_text(room_width-64,64+spacing*(i+1),debugSnaps[i]);
+    for(var i=0;i&lt;global.numDebugSnaps;++i){
+        draw_text(room_width-64,64+spacing*(i+1),global.debugSnaps[i]);
+        var markPosition=lerp(32,room_width-32,(global.debugSnaps[i]-startTiming)/(endTiming-startTiming));
+        draw_set_alpha(0.7);
+        draw_rectangle_colour(markPosition-0.8,32+8-12,markPosition+0.8,32+8+12,c_white,c_white,c_white,c_white,0);
+        draw_set_alpha(1);
     }
 }
 

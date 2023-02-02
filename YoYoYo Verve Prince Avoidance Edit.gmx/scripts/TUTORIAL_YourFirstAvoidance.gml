@@ -66,15 +66,15 @@
     * ```
     *
     * Here, aside from the absolute timer **gt** the event has a local variable named ``ct``, which is the **relative** timer, counted **from the start of the current attack**. It is recommended to use the latter, and set attack start timings in the Create event (see Step 4).
-    * You can use the {@link is_every} function to execute blocks of code every X frames, for example,
+    * You can use the {@link on_beat} function to execute blocks of code every X frames, for example,
     * ```
     * //This code spawns a flower from the center of the screen every beat. The bullets are tagged "flower" which can then be used to manipulate them selectively afterwards
-    * if(is_every(ct,BT)){
+    * if(on_beat(ct,BT)){
     *   spawn_shape(400,304, random(360),6,20,6,objAvoidanceBullet,"flower",shaper_flower);
     * }
     * ```
     * 
-    * You can learn more about designing some of the basic attacks in the {@link TUTORIAL_BasicAttackGuide|Basic Attack Guide.}
+    * 
     * 
     * **Step 6 - Debugging and playtesting**
     * 
@@ -85,3 +85,5 @@
     * With that, your first avoidance is now done! Feel free to experiment with different styles of visuals and attacks, as well as all of the different scripts featured in the engine!
     * 
 */
+
+//You can learn more about designing some of the basic attacks in the {@link TUTORIAL_BasicAttackGuide|Basic Attack Guide.}

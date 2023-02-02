@@ -68,3 +68,8 @@ global.triggers = ds_list_create();
 trigger_list();
 
 randomize();    //Make sure the game starts with a random seed for RNG
+
+
+//Keep track of the custom markings for the avoidance timeline
+global.debugSnaps[0]=0;
+global.numDebugSnaps=0;
