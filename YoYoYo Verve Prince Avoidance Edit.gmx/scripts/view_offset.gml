@@ -1,4 +1,13 @@
-/// view_offset( targetX, targetY, duration, easingFunc = scrRdrTweenSineInOut )
+/// view_offset( targetX, targetY, duration, easingFunc = tween_sine_inout)
+/**
+    * Moves the default view by a specified amount over time. The movement is relative to the initial position of the view when the script is called.
+    * 
+    * @param {float} targetX - the X value to move to the view by.
+    * @param {float} targetY - the Y value to move to the view by.
+    * @param {integer} duration - The duration of the change, in frames.
+    * @param {easingFuncID} easingFunc - The easing function to use. The default is tween_sine_inout.
+    * 
+*/
 var targetX = argument[0];
 var targetY = argument[1];
 var duration = argument[2];

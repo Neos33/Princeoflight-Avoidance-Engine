@@ -1,4 +1,10 @@
 ///view_screen_shake(amplitude,duration);
+/**
+    * Creates a screen shake effect with the specified amplitude for the specified amount of frames.
+    * @param {float} amplitude - The amplitude of the screen shake.
+    * @param {int} duration - The duration of the effect in frames.
+*/
+
 
 var amplitude=argument0;
 var duration=argument1;

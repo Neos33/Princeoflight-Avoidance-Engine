@@ -1,6 +1,6 @@
-///view_set_scale(targetScale)
+/// view_set_scale(targetScale)
 var targetScale = argument[0]*800;
-var StartX=view_xview[0];
+var StartX = view_xview[0];
 var StartY = view_yview[0];
 var StartScale = view_wview[0];
 var MaxScale = targetScale - StartScale;

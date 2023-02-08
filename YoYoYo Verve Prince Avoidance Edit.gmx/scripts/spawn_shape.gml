@@ -1,7 +1,23 @@
 ///spawn_shape(x, y, angle, edges, numprojectiles, speed, obj, opt_tag, opt_shaper)
-//Spawns a custom shape.
-//OPTIONAL: Pass a Shaper script as the last argument to define which shape to spawn
-//Returns an array of bullets
+/**
+    * Spawns a custom shape.
+    *
+    * You can pass a Shaper script as the last argument to define which shape to spawn.
+    *
+    * @param {float} x - The X position to spawn the shape at.
+    * @param {float} y - The Y position to spawn the shape at.
+    * @param {float} angle - The angle at which to spawn the shape.
+    * @param {int} edges - The amount of edges the shape should have.
+    * @param {int} numprojectiles - The total amount of projectiles spawned.
+    * @param {float} speed - The speed at which the shape expands.
+    * @param {objectID} obj - The index of the object type to spawn as the projectile.
+    * @param {string} opt_tag - The tag to assign the projectile. The default is "" (an empty string)
+    * @param {shaper} opt_shaper - The shaper function to use. The default is ``shaper_shape``.
+    * 
+    * @returns {array} An array containing all of the created bullets.
+    * 
+*/
+
 
 
 var spawnX = argument[0];

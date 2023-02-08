@@ -1,4 +1,13 @@
 /// view_rotate(targetAngle, duration, easingFunc = tween_sine_inout);
+/**
+    * Rotates the default view by a specified amount over time. The movement is relative to thie initial rotation of the view.
+    * 
+    * @param {float} targetAngle - The angle to rotate the view by.
+    * @param {integer} duration - The duration of the change, in frames.
+    * @param {easingFuncID} easingFunc - The easing function to use. The default is tween_sine_inout.
+    * 
+*/
+
 
 var targetAngle = argument[0];
 var duration = argument[1];
