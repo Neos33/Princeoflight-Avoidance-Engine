@@ -398,6 +398,7 @@ switch(attackNames[|attack]){ //Main attack loop
                 var bullet = instance_create_ext(400,304,objAvoidanceBullet,3,360*i/8,1,"test");
                 bullet.tag="curve";
                 bullet.sprite_index=sprBulletArrowhead;
+                
                 bullet.image_angle=bullet.direction;
                 tracer_attach(bullet,objAvoidanceBullet,300,16,"tail");
                 instance_shrink_out(bullet,300);
