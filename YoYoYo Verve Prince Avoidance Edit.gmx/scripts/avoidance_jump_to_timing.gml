@@ -3,6 +3,9 @@
     * Sets the avoidance timer to a value specified by **timing**.
     * If **opt_cleanup** is set to true, also cleans up all of the avoidance entities such as bullets.
     * 
+    * @param {int} timing - The timing to jump to.
+    * @param {boolean} opt_cleanup - Whether to clean up the avoidance entities.
+    * 
 */
 
 var timing = argument[0];

@@ -6,7 +6,7 @@
     * 
     * Let's get started!
     * 
-    * **Step 1 - Import a еrack**
+    * **Step 1 - Import a track**
     * 
     * As the first step of making your avoidance, you should choose a music track. You can use {@link https://www.audacityteam.org/|Audacity} to cut the track as needed, as well as detect the BPM of the song.
     * Import the track into GMS as usual, or, alternatively, add it to Included Files and use ``scrLoadMusic`` to get the ID of the track, as follows:
