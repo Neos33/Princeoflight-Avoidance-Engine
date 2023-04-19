@@ -406,8 +406,10 @@
       <script>scripts\random_range_controlled.gml</script>
     </scripts>
     <scripts name="Shader Manipulation">
-      <script>scripts\scrClearShaders.gml</script>
-      <script>scripts\scrApplyShaderEffect.gml</script>
+      <script>scripts\shaders_clear.gml</script>
+      <script>scripts\shader_pop.gml</script>
+      <script>scripts\shader_push.gml</script>
+      <script>scripts\shader_insert.gml</script>
     </scripts>
     <scripts name="Tutorials">
       <script>scripts\TUTORIAL_BasicAttackGuide.gml</script>
@@ -415,10 +417,17 @@
     </scripts>
   </scripts>
   <shaders name="shaders">
-    <shader type="GLSLES">shaders\shAurora.shader</shader>
-    <shader type="GLSLES">shaders\shPlasma.shader</shader>
-    <shader type="GLSLES">shaders\shEasyShaderExample.shader</shader>
-    <shader type="GLSLES">shaders\shGodRays.shader</shader>
+    <shaders name="Post Processing">
+      <shader type="GLSLES">shaders\shEasyShaderExample.shader</shader>
+      <shader type="GLSLES">shaders\shStatic.shader</shader>
+      <shader type="GLSLES">shaders\shGreyscale.shader</shader>
+      <shader type="GLSLES">shaders\shHueShift.shader</shader>
+      <shader type="GLSLES">shaders\shGodRays.shader</shader>
+    </shaders>
+    <shaders name="Image Generation">
+      <shader type="GLSLES">shaders\shAurora.shader</shader>
+      <shader type="GLSLES">shaders\shPlasma.shader</shader>
+    </shaders>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -556,6 +565,7 @@
     </objects>
     <objects name="Shader Manipulation">
       <object>objects\objPShaderChain</object>
+      <object>objects\objPShaderChainElement</object>
       <object>objects\objPShaderEffect</object>
       <object>objects\objPShaderRectangle</object>
     </objects>
