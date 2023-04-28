@@ -344,7 +344,9 @@
       <script>scripts\spawn_3D_circle_ext.gml</script>
       <script>scripts\spawn_shape.gml</script>
       <script>scripts\spawn_circle.gml</script>
+      <script>scripts\spawn_line.gml</script>
       <script>scripts\object_copy.gml</script>
+      <script>scripts\set_direction.gml</script>
       <script>scripts\on_beat.gml</script>
     </scripts>
     <scripts name="Instance Manipulation">
