@@ -14,8 +14,8 @@ if(argument_count>1) opt_cleanup = argument[1];
 
 audio_sound_set_track_position(global.currentMusic,timing/50);
 t=floor(timing);
-for(var i=0;i<ds_list_size(attackTimings)-1;i++){
-    if(timing*50>attackTimings[|i]){
+for(var i=ds_list_size(attackTimings)-2;i>=0;i--){
+    if(timing>attackTimings[|i]){
         attack=i;
         break;       
     }
