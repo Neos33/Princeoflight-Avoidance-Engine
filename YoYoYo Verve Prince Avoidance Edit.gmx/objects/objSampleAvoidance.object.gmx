@@ -429,6 +429,7 @@ switch(attackNames[|attack]){ //Main attack loop
     case "ATTACK2":
     {
         if(ct==1){
+            visual_flash();
             //Remove a shader from the stack - in this case the latest applied (hue shift) shader is removec
             
             shader_pop();

@@ -336,6 +336,7 @@
       <script>scripts\bullet_set_follow_direction.gml</script>
       <script>scripts\block_break.gml</script>
       <script>scripts\block_create.gml</script>
+      <script>scripts\platform_break.gml</script>
       <script>scripts\instance_create_ext.gml</script>
       <script>scripts\trace_trajectory.gml</script>
       <script>scripts\tracer_attach.gml</script>
@@ -371,6 +372,9 @@
       <script>scripts\view_screen_shake.gml</script>
       <script>scripts\view_rotate.gml</script>
       <script>scripts\view_set_scale.gml</script>
+    </scripts>
+    <scripts name="Visual Effects">
+      <script>scripts\visual_flash.gml</script>
     </scripts>
     <scripts name="Easing">
       <script>scripts\tween_back_in.gml</script>
@@ -566,6 +570,7 @@
         <object>objects\oViewScreenShakeCommand</object>
       </objects>
       <object>objects\objRNGController</object>
+      <object>objects\objBrokenPlatform</object>
       <object>objects\objBrokenTile</object>
     </objects>
     <objects name="Shader Manipulation">
@@ -581,6 +586,7 @@
       <object>objects\objAvoidanceEntity</object>
     </objects>
     <objects name="Avoidance Bullets">
+      <object>objects\objPColourRectangle</object>
       <object>objects\objAvoidanceBullet</object>
       <object>objects\objAvoidanceCosmetic</object>
       <object>objects\objAvoidance3DBullet</object>
