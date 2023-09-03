@@ -425,6 +425,9 @@
       <shader type="GLSLES">shaders\shGreyscale.shader</shader>
       <shader type="GLSLES">shaders\shHueShift.shader</shader>
       <shader type="GLSLES">shaders\shGodRays.shader</shader>
+      <shader type="GLSLES">shaders\shSoundodger.shader</shader>
+      <shader type="GLSLES">shaders\shChromaticAberration.shader</shader>
+      <shader type="GLSLES">shaders\shStaticInvert.shader</shader>
     </shaders>
     <shaders name="Image Generation">
       <shader type="GLSLES">shaders\shAurora.shader</shader>
