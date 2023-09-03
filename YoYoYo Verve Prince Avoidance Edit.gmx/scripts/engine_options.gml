@@ -17,7 +17,7 @@ global.menuSound = sndJump;         //Sets what sound to use for navigating the 
 //World
 global.startRoom = rPreAvoidance;         //Sets which room to begin with
 global.roomCaptionDef = "Princeoflight Avoidance Edit";  //Sets default window caption (only works with the Professional version of Studio)
-global.deathMusicMode = 0;          //Sets whether or not to play death music when the player dies (0 = no death music, 1 = instantly pause current music, 2 = fade out current music)
+global.deathMusicMode = 3;          //Sets whether or not to play death music when the player dies (0 = no death music, 1 = instantly pause current music, 2 = fade out current music)
 global.pauseDelayLength = 40;       //Sets the delay in frames in which the player can pause/unpause the game (can be set to 0 to disable pause delay)
 global.timeWhenDead = true;         //Sets whether or not to count the in-game timer when the player is dead
 global.timeWhenCleared = false;     //Increment the timer after the save file is considered finished
