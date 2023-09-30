@@ -431,6 +431,7 @@
       <shader type="GLSLES">shaders\shGodRays.shader</shader>
       <shader type="GLSLES">shaders\shSoundodger.shader</shader>
       <shader type="GLSLES">shaders\shChromaticAberration.shader</shader>
+      <shader type="GLSLES">shaders\shTwirl.shader</shader>
       <shader type="GLSLES">shaders\shStaticInvert.shader</shader>
     </shaders>
     <shaders name="Image Generation">
