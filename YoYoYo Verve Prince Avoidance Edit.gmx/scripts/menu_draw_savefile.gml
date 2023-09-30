@@ -65,3 +65,7 @@ if (index == savefileSelect)
     draw_sprite(sprCherry, animationIndex/15, xx+105,   yy + 310);
     draw_sprite(sprCherry, animationIndex/15, xx+125,   yy + 310);
 }
+
+draw_set_colour(c_white);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
