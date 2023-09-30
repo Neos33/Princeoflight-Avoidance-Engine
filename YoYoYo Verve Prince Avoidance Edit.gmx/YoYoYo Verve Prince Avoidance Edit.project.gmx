@@ -592,7 +592,11 @@
       <object>objects\objAvoidanceCosmetic</object>
       <object>objects\objAvoidance3DBullet</object>
       <object>objects\objAvoidance3DCircle</object>
+      <object>objects\objAvoidance3DTitleDemo</object>
       <object>objects\objAvoidance3DShape</object>
+    </objects>
+    <objects name="Utility">
+      <object>objects\objTextbox</object>
     </objects>
   </objects>
   <rooms name="rooms">

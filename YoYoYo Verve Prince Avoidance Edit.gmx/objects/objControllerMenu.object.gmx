@@ -228,7 +228,7 @@ for (var i = 0; i &lt; numberOfButtons - 2; i++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(ternary(!global.gameStarted, c_black, c_white));
+            <string>draw_set_color(ternary(!global.gameStarted, c_white, c_black));
 draw_set_valign(fa_top);
 draw_set_font(fDefault24);
 
@@ -270,9 +270,9 @@ if (global.controllerIndex != -1)
         controllerText += "None";
     }
     
-    draw_text_outline(400, 48, controllerText, c_white, c_black);
+    draw_text_outline(400, 48, controllerText, c_black, c_white);
     
-    draw_set_color(c_black);
+    draw_set_color(c_white);
 }
 
 menu_draw_menu_buttons(false);

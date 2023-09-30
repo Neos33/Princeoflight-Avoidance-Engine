@@ -4,10 +4,10 @@ var index = argument0;
 var xx = argument1;
 var yy = argument2;
 
-draw_set_text(fa_middle, fa_top, c_black, fDefault30);
+draw_set_text(fa_middle, fa_top, c_white, fDefault30);
 draw_text(xx + 64, yy, str[index]);
 
-draw_set_text(fa_left, fa_top, c_black, fDefault12);
+draw_set_text(fa_left, fa_top, c_white, fDefault12);
 draw_text(xx + 10, yy + 70, "Deaths: " + string(death[index]));
 draw_text(xx + 10, yy + 90, "Time: " + timeStr[index]);
 
@@ -57,13 +57,13 @@ else
 
 if (index == savefileSelect)
 {
-    draw_sprite(sprCherry, animationIndex/15, xx+5,     yy + 310);
-    draw_sprite(sprCherry, animationIndex/15, xx+25,    yy + 310);
-    draw_sprite(sprCherry, animationIndex/15, xx+45,    yy + 310);
+    draw_sprite(sprPCircle, animationIndex/15, xx+5,     yy + 310);
+    draw_sprite(sprPCircle, animationIndex/15, xx+25,    yy + 310);
+    draw_sprite(sprPCircle, animationIndex/15, xx+45,    yy + 310);
     draw_sprite(sprPlayerIdle, animationIndex/5, xx+65, yy + 310);
-    draw_sprite(sprCherry, animationIndex/15, xx+85,    yy + 310);
-    draw_sprite(sprCherry, animationIndex/15, xx+105,   yy + 310);
-    draw_sprite(sprCherry, animationIndex/15, xx+125,   yy + 310);
+    draw_sprite(sprPCircle, animationIndex/15, xx+85,    yy + 310);
+    draw_sprite(sprPCircle, animationIndex/15, xx+105,   yy + 310);
+    draw_sprite(sprPCircle, animationIndex/15, xx+125,   yy + 310);
 }
 
 draw_set_colour(c_white);
