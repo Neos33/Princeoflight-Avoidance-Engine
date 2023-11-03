@@ -352,6 +352,7 @@
     </scripts>
     <scripts name="Instance Manipulation">
       <script>scripts\instance_change_alpha.gml</script>
+      <script>scripts\instance_change_angle.gml</script>
       <script>scripts\instance_morph.gml</script>
       <script>scripts\instance_change_colour.gml</script>
       <script>scripts\instance_change_colour_variable.gml</script>
@@ -420,6 +421,9 @@
     <scripts name="Tutorials">
       <script>scripts\TUTORIAL_BasicAttackGuide.gml</script>
       <script>scripts\TUTORIAL_YourFirstAvoidance.gml</script>
+    </scripts>
+    <scripts name="Attack Templates">
+      <script>scripts\scrImpale.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -548,6 +552,7 @@
     </objects>
     <objects name="Internal">
       <objects name="Instance Manipulation">
+        <object>objects\oRdrChangeAngleCommand</object>
         <object>objects\oMoveToPolarCommand</object>
         <object>objects\oRdrChangeAlphaCommand</object>
         <object>objects\oRdrChangeColorCommand</object>
