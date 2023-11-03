@@ -411,12 +411,12 @@ switch(attackNames[|attack]){ //Main attack loop
             
             var godRaysShader=shader_push(shGodRays,0.0);
             var hueShiftShader=shader_push(shHueShift,0);
-            var twirlShader=shader_push(shTwirl,0);
+            //var twirlShader=shader_push(shTwirl,0);
             
             //We can change the shader parameters using instance manipulation functions
             instance_change_variable(godRaysShader,"intensity",0.5,100,tween_sine_inout);
             instance_change_variable(hueShiftShader,"intensity",2*360.0,1000,tween_linear);
-            instance_change_variable(twirlShader,"intensity",1,1000,tween_linear);
+            //instance_change_variable(twirlShader,"intensity",1,1000,tween_linear);
         }
         with(objAvoidanceBullet){
             if(tag=="curve"){

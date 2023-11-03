@@ -193,6 +193,7 @@
     <sprite>sprites\sprAvoidanceController</sprite>
     <sprite>sprites\sprDrawController</sprite>
     <sprite>sprites\sprAvoidanceMarker</sprite>
+    <sprite>sprites\sprSpotlight</sprite>
     <sprite>sprites\sprSquareSolid</sprite>
   </sprites>
   <backgrounds name="background">
@@ -601,6 +602,7 @@
       <object>objects\objAvoidance3DShape</object>
     </objects>
     <objects name="Utility">
+      <object>objects\objSpotlight</object>
       <object>objects\objTextbox</object>
     </objects>
   </objects>
