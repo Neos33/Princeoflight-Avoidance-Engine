@@ -407,6 +407,7 @@
       <script>scripts\shaper_shape.gml</script>
       <script>scripts\shaper_sawblade.gml</script>
       <script>scripts\shaper_heart.gml</script>
+      <script>scripts\shaper_infinity.gml</script>
       <script>scripts\shaper_star.gml</script>
     </scripts>
     <scripts name="RNG Control">
