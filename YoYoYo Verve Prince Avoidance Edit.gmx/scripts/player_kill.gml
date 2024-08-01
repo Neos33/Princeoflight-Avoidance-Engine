@@ -3,6 +3,10 @@
 
 if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
 {
+    if(global.ance){
+        player_kill_ance();
+        exit;
+    }
     global.deathSound = audio_play_sound(sndDeath, 0, false);
     
     if (!global.muteMusic)  //play death music

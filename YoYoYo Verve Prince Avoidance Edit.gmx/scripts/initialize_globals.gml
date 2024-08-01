@@ -26,6 +26,9 @@ global.noPause = false;         //Used to prevent pausing, for example in bossfi
 global.autosave = false;        //Used to autosave the next time the player is created
 global.noDeath = false;
 global.infJump = false;
+global.dotHitbox = false; //NEW in version 1.1 - control whether the player has a dot hitbox for avoidance or not
+
+
 
 global.gamePaused = false;
 global.pauseSurf = -1;          //Stores the screen surface when the game is paused
@@ -73,3 +76,6 @@ randomize();    //Make sure the game starts with a random seed for RNG
 //Keep track of the custom markings for the avoidance timeline
 global.debugSnaps[0]=0;
 global.numDebugSnaps=0;
+
+global.ance=true;
+scrInitAnce(); ///WIP - Ance Move

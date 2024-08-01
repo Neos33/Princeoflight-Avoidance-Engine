@@ -27,7 +27,9 @@
             <kind>1</kind>
             <string>text="";
 font=fDefault18;
-
+halign=0;
+valign=0;
+additive=false;
 </string>
           </argument>
         </arguments>
@@ -50,12 +52,18 @@ font=fDefault18;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_text(fa_center,fa_middle,c_white,font);
+            <string>draw_set_colour(image_blend);
 draw_set_alpha(image_alpha);
-draw_text(x,y,text);
-draw_set_alpha(1);
-draw_set_text(fa_left,fa_top,c_white,fDefault12);
+draw_set_font(font);
+if(additive) draw_set_blend_mode(bm_add);
+draw_set_align(halign,valign);
+draw_text_transformed_colour(x,y,text,image_xscale,image_yscale,image_angle,image_blend,image_blend,image_blend,image_blend,image_alpha);
 
+
+draw_set_colour(c_white);
+draw_set_alpha(1);
+draw_set_blend_mode(bm_normal);
+draw_set_font(fDefault12);
 </string>
           </argument>
         </arguments>

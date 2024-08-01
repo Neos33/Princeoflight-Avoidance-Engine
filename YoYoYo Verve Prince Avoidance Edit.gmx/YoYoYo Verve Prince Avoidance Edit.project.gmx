@@ -212,6 +212,7 @@
     <script>scripts\engine_options.gml</script>
     <scripts name="World">
       <script>scripts\initialize_globals.gml</script>
+      <script>scripts\scrInitAnce.gml</script>
       <script>scripts\set_room_caption.gml</script>
       <script>scripts\restart_game.gml</script>
       <script>scripts\set_vsync.gml</script>
@@ -278,6 +279,7 @@
       <script>scripts\player_shoot.gml</script>
       <script>scripts\player_set_mask.gml</script>
       <script>scripts\player_kill.gml</script>
+      <script>scripts\player_kill_ance.gml</script>
       <script>scripts\player_flip.gml</script>
     </scripts>
     <scripts name="Trigger">
@@ -315,6 +317,7 @@
       </scripts>
       <scripts name="Draw">
         <script>scripts\draw_text_outline.gml</script>
+        <script>scripts\draw_set_align.gml</script>
         <script>scripts\draw_set_text.gml</script>
       </scripts>
       <scripts name="IWPO Compatibility">
@@ -414,6 +417,11 @@
       <script>scripts\rng_controller_create.gml</script>
       <script>scripts\random_range_controlled.gml</script>
     </scripts>
+    <scripts name="RNG Seeding">
+      <script>scripts\scrSeededSeqInit.gml</script>
+      <script>scripts\random_seeded.gml</script>
+      <script>scripts\random_seeded_range.gml</script>
+    </scripts>
     <scripts name="Shader Manipulation">
       <script>scripts\shaders_clear.gml</script>
       <script>scripts\shader_pop.gml</script>
@@ -426,6 +434,9 @@
     </scripts>
     <scripts name="Attack Templates">
       <script>scripts\scrImpale.gml</script>
+    </scripts>
+    <scripts name="Ance">
+      <script>scripts\bullet_kill_ance.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -450,6 +461,12 @@
     <font>fonts\fDefault24</font>
     <font>fonts\fDefault18</font>
     <font>fonts\fDefault12</font>
+    <fonts name="Ance">
+      <font>fonts\fCredits</font>
+      <font>fonts\fScore</font>
+      <font>fonts\fScoreBig</font>
+      <font>fonts\fScoreSmaller</font>
+    </fonts>
   </fonts>
   <objects name="objects">
     <objects name="World">
@@ -466,6 +483,7 @@
       <object>objects\objPlayerStart</object>
       <object>objects\objPlayer</object>
       <object>objects\objBow</object>
+      <object>objects\objDotHitbox</object>
       <object>objects\objBullet</object>
       <object>objects\objBloodEmitter</object>
       <object>objects\objBlood</object>
@@ -605,6 +623,14 @@
     <objects name="Utility">
       <object>objects\objSpotlight</object>
       <object>objects\objTextbox</object>
+    </objects>
+    <objects name="Ance">
+      <object>objects\objSeedController</object>
+      <object>objects\objScoreSystemController</object>
+      <object>objects\objBLCSystemController</object>
+    </objects>
+    <objects name="RNG Seeding">
+      <object>objects\objSeededRNGSeq</object>
     </objects>
   </objects>
   <rooms name="rooms">
