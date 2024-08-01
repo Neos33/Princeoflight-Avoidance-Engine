@@ -129,12 +129,17 @@ if(followDirection) image_angle=direction;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(killer&amp;&amp;!global.dotHitbox){
-    if(global.ance){
-        bullet_kill_ance();
-        
-    }else{
-        player_kill();
+            <string>
+if(killer){
+
+    var _killed=!global.dotHitbox||collision_rectangle(other.x-1,other.y-1,other.x+1,other.y+1,id,true,false);
+    if(_killed){
+        if(global.ance){
+            bullet_kill_ance();
+            
+        }else{
+            player_kill();
+        }
     }
 }
 </string>
