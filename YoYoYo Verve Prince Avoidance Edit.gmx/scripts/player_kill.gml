@@ -7,6 +7,17 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
         player_kill_ance();
         exit;
     }
+    if(global.iframes) exit;
+    
+    with(objBLCSystemController) hitTimer=1;
+    global.hp--;
+    if(global.hp>0)
+    {
+        global.iframes = global.iframes_max;
+        audio_play_sound(sndTakeDamage, 0, false);
+        exit;
+    }
+    
     global.deathSound = audio_play_sound(sndDeath, 0, false);
     
     if (!global.muteMusic)  //play death music
@@ -36,6 +47,7 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
     with (objPlayer)
     {
         instance_create(x, y, objBloodEmitter);
+        instance_create(x, y, objPlayerGhost);
         instance_destroy();
     }
     

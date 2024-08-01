@@ -72,6 +72,7 @@
       <sound>sound\sndItem</sound>
       <sound>sound\sndBlockChange</sound>
       <sound>sound\sndBossHit</sound>
+      <sound>sound\sndTakeDamage</sound>
       <sound>sound\sndCherry</sound>
       <sound>sound\sndGlass</sound>
       <sound>sound\sndSpikeTrap</sound>
@@ -482,6 +483,7 @@
     <objects name="Player">
       <object>objects\objPlayerStart</object>
       <object>objects\objPlayer</object>
+      <object>objects\objPlayerGhost</object>
       <object>objects\objBow</object>
       <object>objects\objDotHitbox</object>
       <object>objects\objBullet</object>

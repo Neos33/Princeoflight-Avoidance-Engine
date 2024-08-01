@@ -26,6 +26,8 @@ global.gameStarted = true;
 
 global.grav = savedata_get("grav");
 global.difficulty = savedata_get("difficulty");
+global.hp = global.hp_max;
+global.iframes = 0;
 
 if savedata_get("saved") {
     with(instance_create(savedata_get("playerX"), savedata_get("playerY"), objPlayer)) {

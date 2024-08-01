@@ -118,6 +118,7 @@ if (global.gameStarted)
     
     if (!global.gamePaused)
     {
+        if(global.iframes) global.iframes--;
         if (input_check_pressed(KEY.RESTART))
         {
             //Stop death sound/music

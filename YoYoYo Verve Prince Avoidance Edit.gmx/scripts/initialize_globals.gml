@@ -27,6 +27,11 @@ global.autosave = false;        //Used to autosave the next time the player is c
 global.noDeath = false;
 global.infJump = false;
 global.dotHitbox = false; //NEW in version 1.1 - control whether the player has a dot hitbox for avoidance or not
+global.hp_max = 3; //NEW in version 1.1 - the HP value
+global.hp = global.hp_max;
+global.iframes = 0;
+global.iframes_max = 50;
+
 
 
 
@@ -77,5 +82,5 @@ randomize();    //Make sure the game starts with a random seed for RNG
 global.debugSnaps[0]=0;
 global.numDebugSnaps=0;
 
-global.ance=true;
+global.ance = false;
 scrInitAnce(); ///WIP - Ance Move
