@@ -25,7 +25,74 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>file="";
+            <string>///Make sure there is only 1 file handler object
+
+
+if(instance_number(object_index)&gt;1){
+    instance_destroy();
+    exit;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Initialize the variables
+file="";
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Load the freeze log from the included file
+
+
+var _f = file_text_open_read("freezedata.dat");
+while(!file_text_eof(_f)){
+    var _v1 = file_text_read_real(_f);
+    file_text_readln(_f);
+    if(!file_text_eof(_f)){
+        var _v2 = file_text_read_real(_f);
+        file_text_readln(_f);
+        ds_list_add(global.freeze_start,_v1);
+        ds_list_add(global.freeze_end,_v2);
+    }else{
+        break;
+    }
+}
+
+file_text_close(_f);
 </string>
           </argument>
         </arguments>
@@ -48,20 +115,46 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Save to included file test
-
+            <string>///Save the freeze intervals to the included file
 if(global.debugMode){
     if(keyboard_check(vk_control)&amp;&amp;keyboard_check_pressed(ord("S"))){
         fname = get_open_filename("freezedata|*.dat","");
         show_debug_message(fname);
         if(file_exists(fname)){
             var f = file_text_open_write_ns(fname,-1);
-            file_text_write_line_ns(f,string(current_minute));
+            
+            
+            for(var i=0;i&lt;ds_list_size(global.freeze_start);i++){
+                file_text_write_line_ns(f,string(global.freeze_start[|i]));
+                file_text_write_line_ns(f,string(global.freeze_end[|i]));
+            }
             file_text_close_ns(f);
         }
     }
 }
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
