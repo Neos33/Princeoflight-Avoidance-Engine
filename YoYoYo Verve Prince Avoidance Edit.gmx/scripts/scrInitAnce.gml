@@ -52,6 +52,11 @@ global.scoreVisible = true; //set whether the score is always visible, or only o
 global.seeded = false; //set whether to seed the fight or not
 global.displayDebugTimeline = true; //set whether to display the debug timeline
 
+///Freeze frames
+global.freeze_start=ds_list_create();
+global.freeze_end=ds_list_create(); 
+//All freeze frames are stored as a sequence of intervals 
+
 
 //blood
 //global.seqBlood = scrSeededSeqInit(222,irandom(100));

@@ -68,6 +68,7 @@ global.maxComboMultiplier = 1;
 global.combo = 0;
 global.maxCombo = 0;
 global.freezeCombo=false;
+global.freezeComboTimeline=false;
 
 global.unstuckX=400;
 global.unstuckY=608-64;
@@ -200,7 +201,7 @@ if(surface_exists(surf)) surface_free(surf);
           <argument>
             <kind>1</kind>
             <string>///Increment combo
-if(!global.freezeCombo){
+if(!global.freezeCombo&amp;&amp;!global.freezeComboTimeline){
     if(comboTimer&gt;0) comboTimer-=global.comboDropRate;
     else{
         global.combo = 0;

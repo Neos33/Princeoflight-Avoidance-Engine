@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="4" name="datafiles">
-    <datafiles number="4" name="Music">
+  <datafiles number="5" name="datafiles">
+    <datafiles number="5" name="Music">
       <datafile>
         <name>GuyRock.ogg</name>
         <exists>-1</exists>
@@ -57,10 +57,28 @@
       </ConfigOptions>
       <filename>docs_gm.json</filename>
     </datafile>
+    <datafile>
+      <name>freezedata.dat</name>
+      <exists>-1</exists>
+      <size>0</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>freezedata.dat</filename>
+    </datafile>
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\GMSched</extension>
     <extension index="1">extensions\execute_shell_simple_ext</extension>
+    <extension index="2">extensions\nsfs</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Sfx">
@@ -189,6 +207,7 @@
       <sprite>sprites\sprBulletRazzor</sprite>
       <sprite>sprites\sprBulletLeek</sprite>
       <sprite>sprites\sprButterflyCustom</sprite>
+      <sprite>sprites\sprBulletLightning</sprite>
       <sprite>sprites\sprBulletDot</sprite>
     </sprites>
     <sprite>sprites\sprAvoidanceController</sprite>
@@ -629,6 +648,7 @@
     <objects name="Ance">
       <object>objects\objSeedController</object>
       <object>objects\objScoreSystemController</object>
+      <object>objects\objFreezeLogFileHandler</object>
       <object>objects\objBLCSystemController</object>
     </objects>
     <objects name="RNG Seeding">

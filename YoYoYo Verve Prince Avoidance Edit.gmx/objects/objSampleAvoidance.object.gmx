@@ -151,7 +151,9 @@ t=0;
 t_music=0;
 finish=false;
 RealStep=0;
-
+debug_timeline_clicked = false;
+debug_timeline_entry_point_move = 0;
+debug_timeline_entry_selected = 0;
 
 startTiming=0;
 endTiming=attackTimings[|numTimings-1];//floor(audio_sound_length(musicID)*50);
@@ -321,7 +323,7 @@ if(global.debugMode){
         global.numDebugSnaps++;
         show_debug_message(string(t));
     }
-    if(point_in_rectangle(mouse_x,mouse_y,32,0,room_width-32,64)&amp;&amp;mouse_check_button_pressed(mb_left)){ //Navigate the timeline by clicking on it
+    if(point_in_rectangle(mouse_x,mouse_y,32,0,room_width-32,64)&amp;&amp;mouse_check_button_pressed(mb_left)&amp;&amp;!keyboard_check(vk_control)){ //Navigate the timeline by clicking on it
         var trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
         avoidance_jump_to_timing(trackPos);
     }
@@ -351,6 +353,48 @@ if(global.debugMode){
         }
     }
     
+    //Ance Mode - highlight moments on the timeline to freeze using CTRL+Mouse Drag
+    if(point_in_rectangle(mouse_x,mouse_y,32,0,room_width-32,64)&amp;&amp;mouse_check_button_pressed(mb_left)&amp;&amp;keyboard_check(vk_control)){
+        ///When clicking on an existing interval, move its start or end point depending on which one is closest to the cursor
+        var trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64));
+        var _existing_interval_selected = false;
+        for(var i=0;i&lt;ds_list_size(global.freeze_start);i++){
+            if(trackPos&gt;global.freeze_start[|i]&amp;&amp;trackPos&lt;global.freeze_end[|i]){
+                _existing_interval_selected = true;
+                debug_timeline_entry_selected = i;
+                if(abs(trackPos-global.freeze_start[|i])&lt;abs(trackPos-global.freeze_end[|i])){
+                    debug_timeline_entry_point_move = 0; //Move the start point
+                }else{
+                    debug_timeline_entry_point_move = 1; //Move the end point
+                }
+                break;
+            }
+        }
+        
+    
+        ///When clicking on an empty interval, create a new freeze interval
+        if(!_existing_interval_selected){
+            var trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
+            ds_list_add(global.freeze_start,trackPos);
+            ds_list_add(global.freeze_end,trackPos+1);
+            
+            debug_timeline_entry_selected = ds_list_size(global.freeze_start)-1; //move the new entry
+            debug_timeline_entry_point_move = 1 //move the end point 
+        }
+        debug_timeline_clicked=true;
+    }
+    if(debug_timeline_clicked){
+        var trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
+        if(debug_timeline_entry_point_move){
+            global.freeze_end[|debug_timeline_entry_selected]=trackPos;
+        }
+        else{
+            global.freeze_start[|debug_timeline_entry_selected]=trackPos;
+        }
+    }
+    if(mouse_check_button_released(mb_left)){
+        debug_timeline_clicked=false;
+    }
 }
 </string>
           </argument>
@@ -483,6 +527,34 @@ switch(attackNames[|attack]){ //Main attack loop
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Ance - handle the freeze timeline
+
+global.freezeComboTimeline = false;
+for(var i=0;i&lt;ds_list_size(global.freeze_start);i++){
+    if(t&gt;global.freeze_start[|i]&amp;&amp;t&lt;global.freeze_end[|i]){
+        global.freezeComboTimeline = true;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="10">
       <action>
@@ -584,6 +656,13 @@ if(global.debugMode){
         draw_set_alpha(1);
     }
     highlight=-1;
+    
+    ///Highlight combo freezing for Ance
+    for(var i=0;i&lt;ds_list_size(global.freeze_start);i++){
+        var markPositionStart=lerp(32,room_width-32,(global.freeze_start[|i]-startTiming)/(endTiming-startTiming));
+        var markPositionEnd=lerp(32,room_width-32,(global.freeze_end[|i]-startTiming)/(endTiming-startTiming));
+        draw_rectangle_colour(markPositionStart,32,markPositionEnd,48, c_aqua,c_aqua,c_aqua,c_aqua,false);
+    }
 }
 
 </string>

@@ -293,9 +293,9 @@ if ((instance_exists(objPlayer)||instance_exists(objPlayerGhost))&amp;&amp;insta
         draw_set_colour(c_black);
         draw_line_width(x1, y1, x2, y2, 5);
         
-        if(global.freezeCombo) draw_set_colour(c_aqua);
+        draw_set_colour(c_white);
+        if(global.freezeCombo||global.freezeComboTimeline) draw_set_colour(c_aqua);
         if(!global.ance) draw_set_colour(image_blend);
-        else draw_set_colour(c_white);
         draw_line_width(x1, y1, x2, y2, 3);
     }
 }

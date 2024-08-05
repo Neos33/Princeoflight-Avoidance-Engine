@@ -91,5 +91,5 @@ randomize();    //Make sure the game starts with a random seed for RNG
 global.debugSnaps[0]=0;
 global.numDebugSnaps=0;
 
-global.ance = false;
+global.ance = true;
 scrInitAnce(); ///WIP - Ance Move
