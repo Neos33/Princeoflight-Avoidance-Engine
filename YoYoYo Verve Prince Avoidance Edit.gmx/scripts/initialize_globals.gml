@@ -27,10 +27,19 @@ global.autosave = false;        //Used to autosave the next time the player is c
 global.noDeath = false;
 global.infJump = false;
 global.dotHitbox = false; //NEW in version 1.1 - control whether the player has a dot hitbox for avoidance or not
+
 global.hp_max = 3; //NEW in version 1.1 - the HP value
 global.hp = global.hp_max;
+global.hp_regen = 0.005; //NEW in version 1.1 - control the regeneration speed of the HP. Negative values drain your HP!
+global.hp_display_mode = 1; //NEW in version 1.1 - control the display mode of the HP bar.
+//0 = do not display the healthbar
+//1 = display the healthbar on hit or drain
+//2 = display the healthbar on any HP change
+//3 = always display the healthbar
+
 global.iframes = 0;
 global.iframes_max = 50;
+
 
 
 

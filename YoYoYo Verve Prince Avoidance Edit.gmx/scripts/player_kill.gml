@@ -9,8 +9,9 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
     }
     if(global.iframes) exit;
     
-    with(objBLCSystemController) hitTimer=1;
+    //with(objBLCSystemController) hitTimer=1;
     global.hp--;
+    global.hp = max(global.hp,0);
     if(global.hp>0)
     {
         global.iframes = global.iframes_max;

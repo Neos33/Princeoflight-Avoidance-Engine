@@ -60,6 +60,9 @@ exAlpha=1.0;
 if(!global.ance) image_blend=merge_colour(c_white,c_red,0.5);
 
 hitTimer = 0;
+
+
+hp_set=global.hp_max;
 </string>
           </argument>
         </arguments>
@@ -93,6 +96,9 @@ end_angle = 0;  // degrees
 alpha = 0
 num_segments = 50;
 end_flag = false;
+
+
+
 </string>
           </argument>
         </arguments>
@@ -130,6 +136,58 @@ if(global.ance){
     comboTimer=global.hp/global.hp_max;
     hitTimer = lerp(hitTimer,0,0.05);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle the healthbar display modes
+
+if(!global.ance){
+    switch(global.hp_display_mode){
+        case 0:
+        {
+            hitTimer = 0;
+            break;
+        }    
+        case 1:
+        {
+            if(hp_set&gt;global.hp){
+                hitTimer=1;
+            }
+            break;
+        }
+        case 2:
+        {
+            if(hp_set!=global.hp){
+                hitTimer=1;
+            }
+            break;
+        }
+        case 3:
+        {
+            hitTimer=1;
+            break;
+        }
+    
+    }
+}
+hp_set=global.hp;
 </string>
           </argument>
         </arguments>

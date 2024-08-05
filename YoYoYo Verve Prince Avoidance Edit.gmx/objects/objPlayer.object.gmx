@@ -637,6 +637,36 @@ vspeed -= gravity;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HP regeneration
+
+
+global.hp += global.hp_regen;
+global.hp = clamp(global.hp,0,global.hp_max);
+///If the hp is drained via other means than the killer script, kill the player as well
+if(global.hp&lt;=0){
+    //global.hp=1;
+    player_kill();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="objPlatform">
       <action>
