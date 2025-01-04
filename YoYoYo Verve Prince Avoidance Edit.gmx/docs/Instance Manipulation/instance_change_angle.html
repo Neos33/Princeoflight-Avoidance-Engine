@@ -7,7 +7,7 @@
         <title>
         
             
-                instance_change_variable_array • Princeoflight Avoidance Engine Documentation
+                instance_change_angle • Princeoflight Avoidance Engine Documentation
             
         
         </title>
@@ -346,9 +346,9 @@
 		
 	
 		
-			<li class="list-group-item ">
+			<li class="list-group-item active">
 				
-					<a class="btn btn-link ml-4" href="instance_change_angle.html" >instance_change_angle</a>
+					<div class="btn ml-4">instance_change_angle<span class="sr-only">(current)</span></div>
 				
 			</li>
 		
@@ -386,9 +386,9 @@
 		
 	
 		
-			<li class="list-group-item active">
+			<li class="list-group-item ">
 				
-					<div class="btn ml-4">instance_change_variable_array<span class="sr-only">(current)</span></div>
+					<a class="btn btn-link ml-4" href="instance_change_variable_array.html" >instance_change_variable_array</a>
 				
 			</li>
 		
@@ -735,7 +735,7 @@
 	
 
 	
-		<li class="breadcrumb-item active" aria-current="page">instance_change_variable_array</li>
+		<li class="breadcrumb-item active" aria-current="page">instance_change_angle</li>
 	
 
 
@@ -747,10 +747,10 @@
 
 
 
-<h3 id="instance_change_variable_array">instance_change_variable_array</h3>
+<h3 id="instance_change_angle">instance_change_angle</h3>
 
 <p><b>Syntax: </b></p>
-<pre class="lang-js"><code>instance_change_variable_array(targetId, varName, varIndex, targetX, duration, [easingFunc]);</code></pre>
+<pre class="lang-js"><code>instance_change_angle(targetId, targetAngle, duration, [easingFunc]);</code></pre>
 
 
 
@@ -769,25 +769,13 @@
                     <tr>
                         <td><code>targetId</code></td>
                         <td><code>instanceID</code></td>
-                        <td>The instance to change a variable of.</td>
+                        <td>The instance to change the angle of.</td>
                     </tr>
                 
                     <tr>
-                        <td><code>varName</code></td>
-                        <td><code>string</code></td>
-                        <td>A string containing the name of the array to change an element from.</td>
-                    </tr>
-                
-                    <tr>
-                        <td><code>varIndex</code></td>
+                        <td><code>targetAngle</code></td>
                         <td><code>float</code></td>
-                        <td>The index of the element to change.</td>
-                    </tr>
-                
-                    <tr>
-                        <td><code>targetX</code></td>
-                        <td><code>float</code></td>
-                        <td>The final value of the manipulated array element.</td>
+                        <td>The final value to change the angle to.</td>
                     </tr>
                 
                     <tr>
@@ -799,7 +787,7 @@
                     <tr>
                         <td><code>easingFunc</code></td>
                         <td><code>easingFuncID</code></td>
-                        <td>The easing function to use. The default is tween_sine_inout.</td>
+                        <td>The easing function to use. The default is tween_linear.</td>
                     </tr>
                 
             </tbody>
@@ -814,7 +802,7 @@
 
     <div class ="description">
         <p><b>Description: </b></p>
-        <p>Change the element of an array given by varName to targetX over time. Refer to <a href="instance_change_variable.html">instance_change_variable</a> for non-array variables.</p>
+        <p>Change the angle of an instance over time.</p>
 <p>New instance commands override existing ones.</p>
     </div>
 
@@ -832,7 +820,7 @@
 
 		
 			<div class="col">
-				<a href="instance_change_variable_array_full.html"  class="float-right">Next: instance_change_variable_array_full</a>
+				<a href="instance_morph.html"  class="float-right">Next: instance_morph</a>
 			</div>
 		
 	</div>
