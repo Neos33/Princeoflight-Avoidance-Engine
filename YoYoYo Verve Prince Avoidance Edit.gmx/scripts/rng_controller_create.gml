@@ -12,11 +12,11 @@
     * @returns {instanceID} The index of the created RNG controller instance.
 */
 
-var opt_numBins = 4;
+var opt_numBins;opt_numBins = 4;
 if(argument_count>0){
     opt_numBins=argument[0];
 }
-var a=instance_create(0,0,objRNGController);
+var a;a=instance_create(0,0,objRNGController);
 
 a.numBins=opt_numBins;
 

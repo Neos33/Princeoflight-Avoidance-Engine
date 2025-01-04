@@ -1,10 +1,9 @@
-///random_range_controlled(x1,x2,rngController);
+///random_controlled(x2,rngController);
 /**
-    * Randomly generates a value between x1 and x2, using an rngController object (see {@link rng_controller_create}).
+    * Randomly generates a value between 0 and x2, using an rngController object (see {@link rng_controller_create}).
     * The RNG controller object separates the interval into a number of "bins". On the first call, the value is guaranteed to generate in the first bin, then on the second call in the second bin, so on and so forth.
     * This way, random clusters and variations of RNG density can be mitigated, however, care should be taken as using an RNG controller with an amount of bins that is too large will cause the function to lose its randomness.
     * 
-    * @param {float} x1 - The lower boundary of the interval.
     * @param {float} x2 - The upper boundary of the interval.
     * @param {instanceID} rngController - The index of an RNG controller object previously created using {@link rng_controller_create}.
     * 
@@ -18,18 +17,17 @@
     * }else if(ct>1){
     *    var bullet = instance_create(400,304,objAvoidanceBullet);
     *    bullet.speed = 1;
-    *    bullet.direction = random_range_controlled(0,360,rngController);
+    *    bullet.direction = random_range_controlled(360,rngController);
     * }
     * 
 */
 
-var x1;x1 = argument[0];
-var x2;x2 = argument[1];
+var x2;x2 = argument[0];
 
-var rngController;rngController = argument[2];
+var rngController;rngController = argument[1];
 
 
-var bin;bin= rngController.bin;
+var bin;bin = rngController.bin;
 
 
 var xBin1;xBin1=lerp(x1,x2,bin/rngController.numBins);

@@ -436,6 +436,7 @@
     <scripts name="RNG Control">
       <script>scripts\rng_controller_create.gml</script>
       <script>scripts\random_range_controlled.gml</script>
+      <script>scripts\random_controlled.gml</script>
     </scripts>
     <scripts name="RNG Seeding">
       <script>scripts\scrSeededSeqInit.gml</script>

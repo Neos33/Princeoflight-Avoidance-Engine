@@ -122,8 +122,6 @@ if(global.debugMode){
         show_debug_message(fname);
         if(file_exists(fname)){
             var f = file_text_open_write_ns(fname,-1);
-            
-            
             for(var i=0;i&lt;ds_list_size(global.freeze_start);i++){
                 file_text_write_line_ns(f,string(global.freeze_start[|i]));
                 file_text_write_line_ns(f,string(global.freeze_end[|i]));
