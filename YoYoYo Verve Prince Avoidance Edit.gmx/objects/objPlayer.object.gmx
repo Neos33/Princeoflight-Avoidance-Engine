@@ -327,7 +327,7 @@ if (!frozen)
         player_try_jump();
     if (input_check_released(KEY.JUMP))
         player_release_jump();
-    if (input_check_pressed(KEY.SUICIDE))
+    if (input_check_pressed(KEY.SUICIDE)&amp;&amp;!global.ance)
         player_kill();
 }
 
