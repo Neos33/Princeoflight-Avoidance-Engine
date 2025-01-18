@@ -147,8 +147,9 @@ avoidance_add_debug_key(ord("1"),500);
 attack=0;
 
 
-t=0;
-t_music=0;
+t = global.practice_starts; // Replaced
+t_music = global.practice_starts; // Replaced
+
 finish=false;
 RealStep=0;
 debug_timeline_clicked = false;
@@ -174,6 +175,10 @@ global.grav=1;
 
 
 highlight=-1;
+
+
+if t != 0
+    audio_sound_set_track_position(global.currentMusic,t / 50);
 </string>
           </argument>
         </arguments>
@@ -284,10 +289,11 @@ t++;
 t_music=t;
 //Anti-desync taken from Shift Engine.
 
-if(t &gt; 0){
+if(t &gt; 0 and audio_is_playing(global.currentMusic)){
     var music_t = audio_sound_get_track_position(global.currentMusic) * 50;
     if(abs(t_music - music_t) &gt; 5){
-        audio_sound_set_track_position(global.currentMusic,t_music / 50);
+        var _length = audio_sound_length(global.currentMusic) * 50;
+        audio_sound_set_track_position(global.currentMusic, min(t_music / 50, _length));
     }
 }
 if(attack&lt;numTimings-1){
@@ -506,11 +512,19 @@ switch(attackNames[|attack]){ //Main attack loop
     {
         if(ct==1){
         
-            if(bossItem!=-1) global.bossItem[bossItem]=1;
-            if(secretItem!=-1) global.secretItem[secretItem]=1;
-            if(autoWarp){
-                with(objPlayer) instance_destroy();
-                room_goto(roomTo);
+            // If we are in practice mode, we show a message instead of going at the next room
+            if global.practice_use
+            {
+                instance_create(0, 0, objPracticeEndMessage);
+            }
+            else
+            {
+                if(bossItem!=-1) global.bossItem[bossItem]=1;
+                if(secretItem!=-1) global.secretItem[secretItem]=1;
+                if(autoWarp){
+                    with(objPlayer) instance_destroy();
+                    room_goto(roomTo);
+                }
             }
         }
         break;
