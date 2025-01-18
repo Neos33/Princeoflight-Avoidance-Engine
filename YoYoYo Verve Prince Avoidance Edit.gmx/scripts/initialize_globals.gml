@@ -93,3 +93,5 @@ global.numDebugSnaps=0;
 
 global.ance = false;
 scrInitAnce(); ///WIP - Ance Move
+
+practice_init();

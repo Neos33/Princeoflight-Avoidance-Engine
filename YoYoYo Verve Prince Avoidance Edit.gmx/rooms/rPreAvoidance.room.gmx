@@ -54,6 +54,7 @@
     <instance objName="objPlayerStart" x="384" y="544" name="inst_13D9482A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="0" y="576" name="inst_6B04F5C2" locked="0" code="" scaleX="25" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWarpNext" x="384" y="480" name="inst_EE803896" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPracticeController" x="32" y="32" name="inst_392AFD38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="0" y="576" w="32" h="32" xo="32" yo="96" id="10002965" name="inst_844294B1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

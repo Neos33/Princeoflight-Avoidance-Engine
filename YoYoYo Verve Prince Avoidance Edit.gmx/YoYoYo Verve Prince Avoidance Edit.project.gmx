@@ -215,6 +215,12 @@
     <sprite>sprites\sprAvoidanceMarker</sprite>
     <sprite>sprites\sprSpotlight</sprite>
     <sprite>sprites\sprSquareSolid</sprite>
+    <sprites name="Practice">
+      <sprite>sprites\spr1x1</sprite>
+      <sprite>sprites\sprPracticeSegmentPreviewFrame</sprite>
+      <sprite>sprites\sprPracticeSegmentPreview</sprite>
+      <sprite>sprites\sprPracticeCursor</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -459,6 +465,7 @@
     <scripts name="Ance">
       <script>scripts\bullet_kill_ance.gml</script>
     </scripts>
+    <script>scripts\practice_init.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="Post Processing">
@@ -655,6 +662,8 @@
     <objects name="RNG Seeding">
       <object>objects\objSeededRNGSeq</object>
     </objects>
+    <object>objects\objPracticeController</object>
+    <object>objects\objPracticeEndMessage</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Init">
