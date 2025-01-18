@@ -305,7 +305,7 @@ if menu == PRACTICE_PAGE.SEGMENTS
         current_segment_picked = -1;
         menu = PRACTICE_PAGE.ASK_USER;
         
-        audio_play_sound(sndDoubleJump, 0, false);
+        audio_play_sound(sndDJump, 0, false);
         
         // Reset/dectivate globals
         global.practice_starts = 0; // Timer
