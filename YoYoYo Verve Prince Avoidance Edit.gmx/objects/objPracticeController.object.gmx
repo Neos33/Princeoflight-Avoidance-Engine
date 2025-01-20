@@ -86,8 +86,8 @@ numTimings = 0;
 attackNames = ds_list_create();
 attackTimings = ds_list_create();
 avoidance_add_attack("ATTACK1", 0);
-avoidance_add_attack("ATTACK2", 500);
-avoidance_add_attack("ATTACK3", 1000);
+avoidance_add_attack("ATTACK2 long name", 500);
+avoidance_add_attack("ATTACK3 a very very very very long name", 1000);
 avoidance_add_attack("END", 2000);
 </string>
           </argument>
@@ -110,48 +110,73 @@ avoidance_add_attack("END", 2000);
           <argument>
             <kind>1</kind>
             <string>/// Vars
+total_attacks = numTimings;
+total_main_segments = total_attacks - 1; // Ignore *END* attack
+
+// Room position
 screen_x = 0;
 screen_y = 0;
 
-thick_x = 256;
-thick_y = 42;
-
-total_attacks = numTimings;
-attackTimingInfoSeconds = array_create(total_attacks);
-attackTimingInfoDurationSeconds = array_create(total_attacks);
+// Box position / thickness
 segment_x = array_create(total_attacks);
 segment_y = array_create(total_attacks);
+thick_x = 256;
+thick_y = 38;
+
+// Box separation
+separation_y = max(thick_y, 44); // Box separation
+
+// Info
+attackTimingInfoSeconds = array_create(total_attacks);
+attackTimingInfoDurationSeconds = array_create(total_attacks);
 
 song_length = attackTimings[| total_attacks - 1] / 50; // Converted in seconds
 
+
+// Control
 current_segment_selection = -1;
 
 // Init with the value we picked beforehand when we come back
 current_segment_picked = global.practice_segment;
 if global.practice_segment == 0
-    	current_segment_picked = -1;
+    current_segment_picked = -1;
 
-total_main_segments = total_attacks - 1;
 
-separation_y = 64;
+
+
+var box_string = 0;
 if total_attacks &gt; 0
 {
     for (var i = 0; i &lt; total_main_segments; i += 1)
     {
+        // Get the next attack
         var _next_attack = min(i + 1, total_main_segments); // Do not exceed the ds_list limit
         
         // Info in seconds
         attackTimingInfoSeconds[i] = attackTimings[| i] / default_room_speed;
         attackTimingInfoDurationSeconds[i] = abs(attackTimings[| i] - attackTimings[| _next_attack]) / default_room_speed;
 
+        // Percentage
         attackTimingInfoPercentage[i] = lerp(0, 100, attackTimings[| i]  / attackTimings[| total_attacks - 1]);
         
         // Position
         segment_x[i] = screen_x + 32;
         segment_y[i] = screen_y + 48 + separation_y * i;
+        
+        // Determine who has the longest name to stretch the box
+        box_string = max(box_string, string_width(attackNames[| i]));
     }
 }
 
+// Margin
+button_margin_x = 32;
+
+// Stretch the box thickness
+thick_x = max(box_string, 128);
+thick_x += button_margin_x; // Add margin
+
+
+// Practice pages
 enum PRACTICE_PAGE
 {
     ASK_USER,
@@ -159,8 +184,9 @@ enum PRACTICE_PAGE
     OTHER
 }
 
-
+// Current page
 menu = PRACTICE_PAGE.ASK_USER;
+
 // Start from the segment page if we came back from a practice attempt
 if global.practice_use 
 {
@@ -168,16 +194,19 @@ if global.practice_use
 }
 
 
+// Box of the first page (asking the player if they want practice mode) 
 ask_menu_hovered = false;
 ask_menu_position_x = 400;
 ask_menu_position_y = 48;
 
+ask_thick_x = 96;
+ask_thick_y = 16;
+
+
+// Cursor
 cursor_alpha = 0.8;
 cursor_time = 0;
 cursor_time_speed = 4;
-
-ask_thick_x = 96;
-ask_thick_y = 16;
 </string>
           </argument>
         </arguments>
@@ -231,12 +260,14 @@ if menu == PRACTICE_PAGE.ASK_USER
     if point_in_rectangle(mouse_x, mouse_y, ask_menu_position_x - ask_thick_x, ask_menu_position_y - ask_thick_y, 
         ask_menu_position_x + ask_thick_x, ask_menu_position_y + ask_thick_y)
     {
+        // Hover
         if !ask_menu_hovered
         {
             audio_play_sound(sndJump, 0, false);
             ask_menu_hovered = true;
         }
         
+        // Clicked
         if mouse_check_button_pressed(mb_left)
         {
             menu = PRACTICE_PAGE.SEGMENTS;
@@ -299,6 +330,26 @@ if menu == PRACTICE_PAGE.SEGMENTS
         }
     }
     
+    // Unselect
+    var _first = 0;
+    var _last = total_main_segments - 1;
+    var _mouse_outside_of_boxes = !point_in_rectangle(mouse_x, mouse_y, 
+                                            segment_x[_first], segment_y[_first], 
+                                            segment_x[_last] + thick_x, segment_y[_last] + thick_y);
+                                            
+    if _mouse_outside_of_boxes
+    {
+        // Unhover
+        current_segment_selection = -1;
+        
+        // Unselect
+        if mouse_check_button_pressed(mb_left)// and current_segment_picked != -1
+        {
+            current_segment_picked = -1;
+            global.practice_starts = 0;
+        }
+    }
+    
     // Go back
     if mouse_check_button_pressed(mb_right)
     {
@@ -312,6 +363,7 @@ if menu == PRACTICE_PAGE.SEGMENTS
         global.practice_use = false;
     }
 }
+
 
 </string>
           </argument>
@@ -410,23 +462,21 @@ event_user(0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw segments info 
-
-draw_set_color(c_white);
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
+            <string>/// Draw "Use practice mode" button 
 
 if menu == PRACTICE_PAGE.ASK_USER
 {
-    // Box setup
+    // Box/Text setup
     var _color_box = c_black;
     var _color_box_outline = c_white;
-    
     var _color_text = c_white;
     
+    // Set drawing
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     draw_set_color(c_white);
+    
+    // Change the colors if the box is hovered
     if ask_menu_hovered
     {
         _color_box = c_gray;
@@ -434,17 +484,21 @@ if menu == PRACTICE_PAGE.ASK_USER
         _color_text = c_black;
     }
     
+    
+    
     // Draw box
     var _x = screen_x + ask_menu_position_x;
     var _y = screen_y + ask_menu_position_y;
     draw_sprite_ext(spr1x1, 0, _x - ask_thick_x, _y - ask_thick_y, ask_thick_x * 2, ask_thick_y * 2, 0, _color_box, 1);
     
+    // Outline box
     draw_set_color(_color_box_outline);
     draw_rectangle(_x - ask_thick_x, _y - ask_thick_y, _x + ask_thick_x - 1, _y + ask_thick_y - 1, true);
     
     // Draw text
     draw_set_color(_color_text);
     draw_text(_x, _y, "Use practice mode");
+    
     
     // Draw cursor
     draw_sprite_ext(sprPracticeCursor, 0, 400, 96, 1, 1, 0, c_white, cursor_alpha);
@@ -474,44 +528,56 @@ if menu == PRACTICE_PAGE.ASK_USER
             <kind>1</kind>
             <string>/// Draw practice segments
 
-draw_set_halign(fa_left);
+// Draw color settings
+var _color_text = c_white;
 var _color_box = c_black;
 var _color_box_outline = c_white;
+
+// Text align
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
 if menu == PRACTICE_PAGE.SEGMENTS
 {
     for (var i = 0; i &lt; total_main_segments; i += 1)
     {
-        if current_segment_picked == i
+        if current_segment_picked == i // Selected
         {
-            draw_set_color(c_black);
+            _color_text = c_black;
             _color_box = merge_color(c_yellow, c_white, 0.4);
             _color_box_outline = c_black;
         }
-        else if current_segment_selection == i
+        else if current_segment_selection == i // Hovered
         {
-            draw_set_color(c_white);
+            _color_text = c_white;
             _color_box = c_gray;
-            _color_box_outline = c_black;
+            _color_box_outline = c_white;
         }
-        else
+        else 
         {
-            draw_set_color(c_white);
+            _color_text = c_white;
             _color_box = c_black;
             _color_box_outline = c_white;
         }
 
-    draw_sprite_ext(spr1x1, 0, segment_x[i], segment_y[i], thick_x, thick_y, 0, _color_box, 0.8);
-    draw_set_color(_color_box_outline);
-    draw_rectangle(segment_x[i], segment_y[i], segment_x[i] + thick_x - 1, segment_y[i] + thick_y - 1, true)
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_text(segment_x[i] + thick_x / 2, segment_y[i] + thick_y / 2, string(i+1) + ". " + attackNames[| i]);
-}
+        // Draw box
+        draw_sprite_ext(spr1x1, 0, segment_x[i], segment_y[i], thick_x, thick_y, 0, _color_box, 0.8);
+        
+        // Outline box
+        draw_set_color(_color_box_outline);
+        draw_rectangle(segment_x[i], segment_y[i], segment_x[i] + thick_x - 1, segment_y[i] + thick_y - 1, true)
+        
+        // Draw text
+        draw_set_color(_color_text);
+        draw_text(segment_x[i] + thick_x / 2, segment_y[i] + thick_y / 2, string(i+1) + ". " + attackNames[| i]);
+    }
 
+    // Text info settings
     draw_set_color(c_white);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
     
+    // Show info if any of the segments is being selected
     if current_segment_picked != -1
     {
         // Draw thumbnail
@@ -527,25 +593,45 @@ if menu == PRACTICE_PAGE.SEGMENTS
         draw_text(screen_x + 800 - 256, screen_y + 304 + 16, "Duration: " + _formatted_time_duration);
     }
     
+    // Draw song length / duration
     var _formatted_time_song_length = string(floor(song_length/60)) + ":" + string(floor(song_length mod 60));
     draw_text(screen_x + 800 - 256, screen_y + 304 + 48, "Song length: " + _formatted_time_song_length);
     
     // Draw cursor
     draw_sprite_ext(sprPracticeCursor, 0, screen_x + 400, screen_y + 96, 1, 1, 0, c_white, cursor_alpha);
     
+    
+    
     // Go back
     draw_set_halign(fa_right);
     draw_set_valign(fa_bottom);
     draw_text(screen_x + 800 - 32, screen_y + 608 - 32, "*Right click* to exit.");
 }
-
-
-// Reset values
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reset drawing settings
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
 draw_set_alpha(1);
-
 </string>
           </argument>
         </arguments>
