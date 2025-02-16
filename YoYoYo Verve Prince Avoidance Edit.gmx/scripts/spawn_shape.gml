@@ -46,7 +46,7 @@ for(var i=0;i<spawnNum;i++){
     a.speed=spawnSpeed*aa[0];
     a.direction=aa[1]+spawnAngle;
     a.tag = opt_tag;
-    aaa[@i]=a;
+    aaa[i]=a;
 }
 
 return aaa;

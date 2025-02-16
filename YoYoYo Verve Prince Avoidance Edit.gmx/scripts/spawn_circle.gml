@@ -22,7 +22,7 @@ var spawnSpeed = argument[4];
 var spawnObj = argument[5];
 var opt_tag = 0;
 if(argument_count>6) opt_tag=argument[6];
-var a;
+var a,aaa;
 
 aaa[0]=0;
 aaa[spawnNum-1]=0;
@@ -32,6 +32,6 @@ for (var i = 0; i < spawnNum; i += 1)
     a.speed = spawnSpeed;
     a.direction = spawnAngle + i * (360 / spawnNum);
     a.tag=opt_tag;
-    aaa[@i]=a;
+    aaa[i]=a;
 }
 return aaa;

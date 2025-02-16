@@ -27,7 +27,7 @@ var spawnObj = argument[7];
 var opt_tag = 0;
 if(argument_count>6) opt_tag=argument[8];
 
-var a;
+var a, aaa;
 
 aaa[0]=0;
 aaa[spawnNum-1]=0;
@@ -40,6 +40,6 @@ for (var i = 0; i < spawnNum; i += 1)
     a.direction = spawnAngle;
     a.image_angle = a.direction;
     a.tag=opt_tag;
-    aaa[@i]=a;
+    aaa[i]=a;
 }
 return aaa;
