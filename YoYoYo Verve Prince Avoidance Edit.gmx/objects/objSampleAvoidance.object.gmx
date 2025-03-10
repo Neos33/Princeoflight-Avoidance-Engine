@@ -150,6 +150,11 @@ attack=0;
 t = global.practice_starts; // Replaced
 t_music = global.practice_starts; // Replaced
 
+if global.practice_use
+{
+    instance_create(0, 0, objPracticeMessage);
+}
+
 finish=false;
 RealStep=0;
 debug_timeline_clicked = false;

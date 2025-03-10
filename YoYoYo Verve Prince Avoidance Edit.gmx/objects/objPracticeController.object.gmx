@@ -77,17 +77,20 @@ default_room_speed = 50;
           <argument>
             <kind>1</kind>
             <string>/// Attack timings
-/// Variables taken from the *Sample avoidance*
-//BEAT_TIME = 50 / (BPM / 60); //BEAT_TIME = time between beats in frames. Calculated from the BPM
+// Variables taken from the *Sample avoidance*
 
 //Add attacks using avoidance_add_attack. "END" should always be last
 numTimings = 0;
 
 attackNames = ds_list_create();
 attackTimings = ds_list_create();
+
 avoidance_add_attack("ATTACK1", 0);
 avoidance_add_attack("ATTACK2 long name", 500);
 avoidance_add_attack("ATTACK3 a very very very very long name", 1000);
+
+
+// "END" should be the last one, only change the second argument (time)
 avoidance_add_attack("END", 2000);
 </string>
           </argument>
@@ -110,6 +113,8 @@ avoidance_add_attack("END", 2000);
           <argument>
             <kind>1</kind>
             <string>/// Vars
+
+// Get the total of attacks (Do not modify)
 total_attacks = numTimings;
 total_main_segments = total_attacks - 1; // Ignore *END* attack
 
@@ -120,6 +125,8 @@ screen_y = 0;
 // Box position / thickness
 segment_x = array_create(total_attacks);
 segment_y = array_create(total_attacks);
+box_x = screen_x + 32;
+box_y = screen_y + 66;
 thick_x = 256;
 thick_y = 38;
 
@@ -138,7 +145,7 @@ current_segment_selection = -1;
 
 // Init with the value we picked beforehand when we come back
 current_segment_picked = global.practice_segment;
-if global.practice_segment == 0
+if global.practice_segment == -1
     current_segment_picked = -1;
 
 
@@ -160,8 +167,8 @@ if total_attacks &gt; 0
         attackTimingInfoPercentage[i] = lerp(0, 100, attackTimings[| i]  / attackTimings[| total_attacks - 1]);
         
         // Position
-        segment_x[i] = screen_x + 32;
-        segment_y[i] = screen_y + 48 + separation_y * i;
+        segment_x[i] = box_x;
+        segment_y[i] = box_y + separation_y * i;
         
         // Determine who has the longest name to stretch the box
         box_string = max(box_string, string_width(attackNames[| i]));
@@ -203,10 +210,34 @@ ask_thick_x = 96;
 ask_thick_y = 16;
 
 
-// Cursor
+// Cursor animation
 cursor_alpha = 0.8;
 cursor_time = 0;
 cursor_time_speed = 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Menu audio
+sfx_hover = sndJump;
+sfx_selected = sndItem;
+sfx_back = sndDJump;
 </string>
           </argument>
         </arguments>
@@ -263,7 +294,7 @@ if menu == PRACTICE_PAGE.ASK_USER
         // Hover
         if !ask_menu_hovered
         {
-            audio_play_sound(sndJump, 0, false);
+            audio_play_sound(sfx_hover, 0, false);
             ask_menu_hovered = true;
         }
         
@@ -271,7 +302,7 @@ if menu == PRACTICE_PAGE.ASK_USER
         if mouse_check_button_pressed(mb_left)
         {
             menu = PRACTICE_PAGE.SEGMENTS;
-            audio_play_sound(sndItem, 0, false);
+            audio_play_sound(sfx_selected, 0, false);
             global.practice_use = true;
         }
     }
@@ -311,7 +342,7 @@ if menu == PRACTICE_PAGE.SEGMENTS
             // Hover
             if current_segment_selection != i
             {
-                audio_play_sound(sndJump, 0, false);
+                audio_play_sound(sfx_hover, 0, false);
             }
             current_segment_selection = i;
             
@@ -321,10 +352,13 @@ if menu == PRACTICE_PAGE.SEGMENTS
                 if current_segment_picked != i
                 {
                     current_segment_picked = i;
-                    audio_play_sound(sndItem, 0, false);
+                    audio_play_sound(sfx_selected, 0, false);
                     
                     // The avoidance will start at the moment you selected
                     global.practice_starts = attackTimings[| i];
+                    
+                    // Update the global, so the segment chosen will be selected when we come back
+                    global.practice_segment = current_segment_picked;
                 }
             }
         }
@@ -347,6 +381,8 @@ if menu == PRACTICE_PAGE.SEGMENTS
         {
             current_segment_picked = -1;
             global.practice_starts = 0;
+            
+            global.practice_segment = current_segment_picked;
         }
     }
     
@@ -356,10 +392,11 @@ if menu == PRACTICE_PAGE.SEGMENTS
         current_segment_picked = -1;
         menu = PRACTICE_PAGE.ASK_USER;
         
-        audio_play_sound(sndDJump, 0, false);
+        audio_play_sound(sfx_back, 0, false);
         
-        // Reset/dectivate globals
+        // Reset / deactivate globals
         global.practice_starts = 0; // Timer
+        global.practice_segment = 0;
         global.practice_use = false;
     }
 }
@@ -501,11 +538,8 @@ if menu == PRACTICE_PAGE.ASK_USER
     
     
     // Draw cursor
-    draw_sprite_ext(sprPracticeCursor, 0, 400, 96, 1, 1, 0, c_white, cursor_alpha);
+    draw_sprite_ext(sprPracticeCursor, 0, 400, 96, 0.5, 0.5, 0, c_white, cursor_alpha);
 }
-
-
-
 </string>
           </argument>
         </arguments>
@@ -571,18 +605,29 @@ if menu == PRACTICE_PAGE.SEGMENTS
         draw_set_color(_color_text);
         draw_text(segment_x[i] + thick_x / 2, segment_y[i] + thick_y / 2, string(i+1) + ". " + attackNames[| i]);
     }
-
-    // Text info settings
+    
+    // Draw "Pick your segment above the practice segments
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_bottom);
     draw_set_color(c_white);
+    
+    draw_text(box_x + thick_x / 2, box_y - 10, "Select the segment to practice");
+
+    // Draw right sidebar info (box)
+    draw_sprite_ext(spr1x1, 0, screen_x + 432, screen_y + 48, 352, 432, 0, c_black, 0.3);
+    draw_rectangle(screen_x + 432, screen_y + 48, screen_x + 784, screen_y + 480, true);
+    
+    // Text info settings
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
+    
     
     // Show info if any of the segments is being selected
     if current_segment_picked != -1
     {
         // Draw thumbnail
-        draw_sprite_ext(sprPracticeSegmentPreview, current_segment_picked, screen_x + 592, screen_y + 176, 1, 1, 0, c_white, 1);
-        draw_sprite_ext(sprPracticeSegmentPreviewFrame, current_segment_picked, screen_x + 592, screen_y + 176, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(sprPracticeSegmentPreview, current_segment_picked, screen_x + 608, screen_y + 178, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(sprPracticeSegmentPreviewFrame, current_segment_picked, screen_x + 608, screen_y + 178, 1, 1, 0, c_white, 1);
         
         // Draw timer start + percentage of the song
         var _formatted_time = string(floor(attackTimingInfoSeconds[current_segment_picked]/60)) + ":" + string(floor(attackTimingInfoSeconds[current_segment_picked] mod 60));
@@ -598,7 +643,7 @@ if menu == PRACTICE_PAGE.SEGMENTS
     draw_text(screen_x + 800 - 256, screen_y + 304 + 48, "Song length: " + _formatted_time_song_length);
     
     // Draw cursor
-    draw_sprite_ext(sprPracticeCursor, 0, screen_x + 400, screen_y + 96, 1, 1, 0, c_white, cursor_alpha);
+    //draw_sprite_ext(sprPracticeCursor, 0, screen_x + 400, screen_y + 96, 0.5, 0.5, 0, c_white, cursor_alpha);
     
     
     

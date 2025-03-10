@@ -665,6 +665,7 @@
     </objects>
     <object>objects\objPracticeController</object>
     <object>objects\objPracticeEndMessage</object>
+    <object>objects\objPracticeMessage</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Init">
